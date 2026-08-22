@@ -1,5 +1,7 @@
+import UploadScreen from "./components/UploadScreen";
+
 function App() {
-    return <></>;
+    return <UploadScreen />;
 }
 
 export default App;

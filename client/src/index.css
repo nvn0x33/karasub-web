@@ -4,9 +4,9 @@
 
 @theme static {
     /* INTER FONT */
-    --text-inter-sm: 0.875rem;
-    --text-inter-md: 1.5rem;
-    --text-inter-lg: 3rem;
+    --text-desc: 0.875rem;
+    --text-headline: 1.5rem;
+    --text-heading: 3rem;
 
     /* JETBRAINS MONO */
     --text-mono-code: 0.8125rem;
