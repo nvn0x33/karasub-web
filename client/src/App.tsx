@@ -1,7 +1,13 @@
+import Header from "./components/Header";
 import UploadScreen from "./components/UploadScreen";
 
 function App() {
-    return <UploadScreen />;
+    return (
+        <>
+            <Header />
+            <UploadScreen />
+        </>
+    );
 }
 
 export default App;
