@@ -21,7 +21,7 @@ export default function ThemeToggle() {
 
     return (
         <button
-            className="p-2 self-center rounded-full hover:bg-desc/20"
+            className="p-1.5 self-center rounded-full hover:bg-desc/20"
             onClick={handleClick}
         >
             {theme === "light" ? (
