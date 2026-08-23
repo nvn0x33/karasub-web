@@ -20,8 +20,15 @@ export default function ThemeToggle() {
     };
 
     return (
-        <button onClick={handleClick}>
-            {theme === "light" ? <Sun /> : <Moon color="white" />}
+        <button
+            className="p-2 self-center rounded-full hover:bg-desc/20"
+            onClick={handleClick}
+        >
+            {theme === "light" ? (
+                <Sun className="text-desc" strokeWidth={2.5} />
+            ) : (
+                <Moon className="text-desc" strokeWidth={2.5} />
+            )}
         </button>
     );
 }
