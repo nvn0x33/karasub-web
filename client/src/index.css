@@ -4,9 +4,9 @@
 
 @theme static {
     /* INTER FONT */
-    --text-desc: 0.875rem;
-    --text-headline: 1.5rem;
-    --text-heading: 3rem;
+    --text-size-desc: 0.875rem;
+    --text-size-headline: 1.5rem;
+    --text-size-heading: 3rem;
 
     /* JETBRAINS MONO */
     --text-mono-code: 0.8125rem;
@@ -21,6 +21,7 @@
     --color-config-bg: #f2f3ff;
     --color-headline: #191b24;
     --color-desc: #44474e;
+    --color-outline: #d1d5db;
 
     /* FONTS */
     --font-sans: "Inter Variable", sans-serif;
@@ -32,6 +33,7 @@
     --color-config-bg: #1c1b1b;
     --color-headline: #e5e2e1;
     --color-desc: #c2c6d8;
+    --color-outline: #364153;
 }
 :root {
     text-rendering: optimizeLegibility;

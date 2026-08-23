@@ -5,7 +5,9 @@ function App() {
     return (
         <>
             <Header />
-            <UploadScreen />
+            <main className="outline outline-outline">
+                <UploadScreen />
+            </main>
         </>
     );
 }
