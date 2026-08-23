@@ -5,18 +5,16 @@ export default function ThemeToggle() {
     const [theme, setTheme] = useState<string>("light");
 
     const handleClick = () => {
-        const htmlElement = document.documentElement;
-        let nextTheme: string;
+        const htmlElement: HTMLElement = document.documentElement;
+        const isLight: boolean = theme === "light";
 
-        if (theme === "light") {
-            nextTheme = "dark";
+        if (isLight) {
             htmlElement.classList.add("dark");
+            setTheme("dark");
         } else {
-            nextTheme = "light";
             htmlElement.classList.remove("dark");
+            setTheme("light");
         }
-
-        setTheme(nextTheme);
     };
 
     return (
