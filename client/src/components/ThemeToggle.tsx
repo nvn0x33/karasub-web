@@ -18,14 +18,17 @@ export default function ThemeToggle() {
     };
 
     return (
-        <button
-            className="p-1.5 self-center rounded-full hover:bg-desc/20"
-            onClick={handleClick}
-        >
+        <button className="self-center rounded-full" onClick={handleClick}>
             {theme === "light" ? (
-                <Sun className="text-desc" strokeWidth={2.5} />
+                <Sun
+                    className="text-desc hover:text-icon-hover"
+                    strokeWidth={2.5}
+                />
             ) : (
-                <Moon className="text-desc" strokeWidth={2.5} />
+                <Moon
+                    className="text-desc hover:text-icon-hover"
+                    strokeWidth={2.5}
+                />
             )}
         </button>
     );

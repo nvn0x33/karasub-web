@@ -14,6 +14,7 @@
 
     /* CONSTANT VARIABLES */
     --color-button-bg: #0066ff;
+    --color-icon-hover: #507aea;
 
     /* THEME VARIABLES */
     --color-bg: #faf8ff;
@@ -36,4 +37,8 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+    cursor: pointer;
 }
