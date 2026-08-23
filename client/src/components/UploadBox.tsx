@@ -1,0 +1,15 @@
+import { Upload } from "lucide-react";
+import HeadDesc from "./HeadDesc";
+
+export default function UploadBox() {
+    return (
+        <div className="p-8 flex flex-col items-center gap-10 border border-dashed border-outline w-1/2 m-auto">
+            <Upload size={48} className="text-primary" strokeWidth={3} />
+            <HeadDesc
+                headline="Drag & drop your video here"
+                desc="or click to browse your device"
+            />
+            <input type="file" id="videoInput" accept="video/*" hidden />
+        </div>
+    );
+}

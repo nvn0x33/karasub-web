@@ -1,4 +1,5 @@
 import HeadDesc from "./HeadDesc";
+import UploadBox from "./UploadBox";
 
 export default function UploadScreen() {
     return (
@@ -7,8 +8,8 @@ export default function UploadScreen() {
                 headline="New Project"
                 desc="Upload your video to begin framing perfect subtitles."
             />
-            <div className="flex flex-col gap-2">
-                <div className="video-upload-container"></div>
+            <div className="flex flex-col gap-6">
+                <UploadBox />
                 <span className="text-mono-label font-mono font-medium text-desc">
                     Maximum file size: 2GB. For best results, use 1080p source
                     material.
