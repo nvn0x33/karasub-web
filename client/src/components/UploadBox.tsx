@@ -1,6 +1,7 @@
 import { Upload } from "lucide-react";
 import HeadDesc from "./HeadDesc";
 import PrimaryButton from "./PrimaryButton";
+import SupportedFormats from "./SupportedFormats";
 
 export default function UploadBox() {
     return (
@@ -17,6 +18,7 @@ export default function UploadBox() {
                 id="videoInput"
                 htmlFor="videoInput"
             />
+            <SupportedFormats />
         </div>
     );
 }
