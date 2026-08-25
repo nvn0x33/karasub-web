@@ -1,5 +1,6 @@
 import { Upload } from "lucide-react";
 import HeadDesc from "./HeadDesc";
+import PrimaryButton from "./PrimaryButton";
 
 export default function UploadBox() {
     return (
@@ -10,6 +11,12 @@ export default function UploadBox() {
                 desc="or click to browse your device"
             />
             <input type="file" id="videoInput" accept="video/*" hidden />
+            <PrimaryButton
+                text="SELECT FILE"
+                handleClick={() => {}}
+                id="videoInput"
+                htmlFor="videoInput"
+            />
         </div>
     );
 }
