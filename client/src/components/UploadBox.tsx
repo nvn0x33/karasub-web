@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 import { Upload } from "lucide-react";
 import HeadDesc from "./HeadDesc";
@@ -6,17 +6,12 @@ import PrimaryButton from "./PrimaryButton";
 import SupportedFormats from "./SupportedFormats";
 
 export default function UploadBox() {
-    const fileInput = useRef(null);
     const [hover, setHover] = useState<boolean>(false);
 
-    const handleFileUpload = () => {
-        const video = fileInput.current.files[0];
-
-        if (video) {
-            console.log(video.name, typeof video);
-        }
+    const handleFileUpload = (files) => {
+        const file1 = files[0];
+        console.log(file1.type);
     };
-
     return (
         <div
             onDragEnter={() => {
@@ -28,7 +23,9 @@ export default function UploadBox() {
             onDragOver={(e) => {
                 e.preventDefault();
             }}
-            // onDrop={}
+            onDrop={(e) => {
+                handleFileUpload(e.dataTransfer.files);
+            }}
             className={`p-8 border border-dashed border-outline w-1/2 m-auto max-md:w-full ${
                 hover ? "border-primary" : ""
             } `}
@@ -44,8 +41,9 @@ export default function UploadBox() {
                     desc="or click to browse your device"
                 />
                 <input
-                    ref={fileInput}
-                    onChange={handleFileUpload}
+                    onChange={(e) => {
+                        handleFileUpload(e.target.files);
+                    }}
                     type="file"
                     id="videoInput"
                     accept="video/*"
