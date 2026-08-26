@@ -24,7 +24,9 @@ export default function UploadBox() {
                 e.preventDefault();
             }}
             onDrop={(e) => {
+                e.preventDefault();
                 handleFileUpload(e.dataTransfer.files);
+                setHover(false);
             }}
             className={`p-8 border border-dashed border-outline w-1/2 m-auto max-md:w-full ${
                 hover ? "border-primary" : ""
