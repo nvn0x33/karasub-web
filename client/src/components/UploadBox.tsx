@@ -4,11 +4,11 @@ import { Upload } from "lucide-react";
 import HeadDesc from "./HeadDesc";
 import PrimaryButton from "./PrimaryButton";
 import SupportedFormats from "./SupportedFormats";
-import { CurrentPage } from "../contexts";
+import { PageContext } from "../contexts";
 
 export default function UploadBox() {
     const [hover, setHover] = useState<boolean>(false);
-    const nextPage = useContext(CurrentPage);
+    const nextPage = useContext(PageContext);
 
     const handleFileUpload = (files: FileList) => {
         const file: File = files[0];

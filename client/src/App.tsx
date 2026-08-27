@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CurrentPage } from "./contexts";
+import { PageContext } from "./contexts";
 
 import Header from "./components/Header";
 import UploadScreen from "./components/UploadScreen";
@@ -20,11 +20,11 @@ function App() {
     return (
         <>
             <Header />
-            <CurrentPage value={changePage}>
+            <PageContext value={changePage}>
                 <main className="outline outline-outline">
-                    {pageIndex === 0 && <UploadScreen />}
+                    {pages[pageIndex] === "upload" && <UploadScreen />}
                 </main>
-            </CurrentPage>
+            </PageContext>
         </>
     );
 }
