@@ -18,14 +18,14 @@ function App() {
         });
     };
     return (
-        <>
+        <div className="flex flex-col min-h-dvh">
             <Header />
             <PageContext value={changePage}>
-                <main className="outline outline-outline">
+                <main className="outline outline-outline flex flex-col flex-1">
                     {pages[pageIndex] === "upload" && <UploadScreen />}
                 </main>
             </PageContext>
-        </>
+        </div>
     );
 }
 

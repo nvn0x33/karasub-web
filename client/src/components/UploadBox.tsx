@@ -38,7 +38,7 @@ export default function UploadBox() {
                 handleFileUpload(e.dataTransfer.files);
                 setHover(false);
             }}
-            className={`p-8 border border-dashed border-outline w-1/2 m-auto max-md:w-full ${
+            className={`px-8 py-12 border border-dashed border-outline w-1/2 m-auto max-md:w-full ${
                 hover ? "border-primary" : ""
             } `}
         >

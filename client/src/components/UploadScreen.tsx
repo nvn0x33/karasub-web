@@ -3,7 +3,7 @@ import UploadBox from "./UploadBox";
 
 export default function UploadScreen() {
     return (
-        <section className="text-center flex flex-col gap-12 bg-bg h-full py-6 px-7 max-md:p-4">
+        <section className="text-center flex-1 flex flex-col justify-evenly bg-bg py-6 px-7 max-md:p-4">
             <HeadDesc
                 headline="New Project"
                 desc="Upload your video to begin framing perfect subtitles."
