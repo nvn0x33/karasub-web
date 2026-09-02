@@ -9,25 +9,11 @@ export default function ThemeToggle() {
     const [theme, setTheme] = useState<string>(storageHandler.getTheme());
 
     useEffect(() => {
-        if (storageHandler.getTheme() === "dark") {
-            htmlElement.classList.add("dark");
-        } else {
-            htmlElement.classList.remove("dark");
-        }
-    }, []);
+        htmlElement.classList.toggle("dark", theme === "dark");
+    }, [theme]);
 
     const handleClick = () => {
-        let newTheme: string;
-
-        const isLight: boolean = theme === "light";
-
-        if (isLight) {
-            htmlElement.classList.add("dark");
-            newTheme = "dark";
-        } else {
-            htmlElement.classList.remove("dark");
-            newTheme = "light";
-        }
+        const newTheme = theme === "light" ? "dark" : "light";
 
         setTheme(newTheme);
         storageHandler.setTheme(newTheme);
