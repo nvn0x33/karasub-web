@@ -3,6 +3,7 @@ import { PageContext } from "./contexts";
 
 import Header from "./components/Header";
 import UploadScreen from "./pages/UploadScreen";
+import SubtitleConfig from "./pages/SubtitleConfig";
 
 const pages: string[] = ["upload", "config", "processing", "download"];
 
@@ -23,6 +24,7 @@ function App() {
             <PageContext value={changePage}>
                 <main className="outline outline-outline flex flex-col flex-1">
                     {pages[pageIndex] === "upload" && <UploadScreen />}
+                    {pages[pageIndex] === "config" && <SubtitleConfig />}
                 </main>
             </PageContext>
         </div>
