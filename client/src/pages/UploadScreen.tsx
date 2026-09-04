@@ -1,5 +1,5 @@
-import HeadDesc from "./HeadDesc";
-import UploadBox from "./UploadBox";
+import HeadDesc from "../components/HeadDesc";
+import UploadBox from "../components/UploadBox";
 
 export default function UploadScreen() {
     return (

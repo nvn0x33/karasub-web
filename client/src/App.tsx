@@ -2,7 +2,7 @@ import { useState } from "react";
 import { PageContext } from "./contexts";
 
 import Header from "./components/Header";
-import UploadScreen from "./components/UploadScreen";
+import UploadScreen from "./pages/UploadScreen";
 
 const pages: string[] = ["upload", "config", "processing", "download"];
 
