@@ -1,4 +1,4 @@
-export default function ColorButton({ color }) {
+export default function ColorButton({ color }: { color: string }) {
     return (
         <button
             style={{ backgroundColor: color }}

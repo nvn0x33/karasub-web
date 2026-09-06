@@ -48,17 +48,19 @@ const ConfigUI = [
 export default function SubtitleConfig() {
     return (
         <section className="flex flex-1">
-            <div>
+            <div className="flex flex-1 flex-col justify-between p-4">
                 {ConfigUI.map((section) => (
                     <div key={section.id}>
-                        <h5>{section.title}</h5>
-                        {section.rows.map((row) => (
-                            <ColorRow
-                                key={row.id}
-                                text={row.label}
-                                colors={row.colors}
-                            />
-                        ))}
+                        <h5 className="mb-2">{section.title}</h5>
+                        <div className="flex flex-col gap-2">
+                            {section.rows.map((row) => (
+                                <ColorRow
+                                    key={row.id}
+                                    text={row.label}
+                                    colors={row.colors}
+                                />
+                            ))}
+                        </div>
                     </div>
                 ))}
                 {/* <div className="flex justify-between">

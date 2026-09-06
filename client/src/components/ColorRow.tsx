@@ -2,10 +2,10 @@ import ColorButton from "./ColorButton";
 
 export default function ColorRow({ text, colors }) {
     return (
-        <div>
+        <div className="flex flex-col gap-1">
             <h6>{text}</h6>
-            <div>
-                {colors.map((color) => (
+            <div className="flex gap-1">
+                {colors.map((color: string) => (
                     <ColorButton color={color} />
                 ))}
             </div>
