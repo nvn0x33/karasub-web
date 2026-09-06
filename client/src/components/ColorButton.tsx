@@ -1,9 +1,8 @@
 export default function ColorButton({ color }) {
-    // const bgColor: string = `bg-${color}`;
     return (
         <button
             style={{ backgroundColor: color }}
-            className={`p-4`}
+            className={`p-4 rounded outline outline-outline`}
             key={color}
             id={`${color}-button`}
         ></button>
