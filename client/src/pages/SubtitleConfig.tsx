@@ -2,7 +2,7 @@ import ColorRow from "../components/ColorRow";
 
 const ConfigUI = [
     {
-        id: "highlighted",
+        id: "highlight",
         title: "HIGHLIGHTED WORDS",
         rows: [
             {
@@ -34,16 +34,6 @@ const ConfigUI = [
         ],
     },
 ];
-
-// const HIGHLIGHTED_COLORS = {
-//     row1: ["#ffff00", "#87ceeb", "#000000"],
-//     row2: ["#000000", "#808080", "#ffffff"],
-// };
-
-// const OTHER_COLORS = {
-//     row1: ["#ffffff", "#808080", "#000000"],
-//     row2: ["#000000", "#808080", "#ffffff"],
-// };
 
 export default function SubtitleConfig() {
     return (

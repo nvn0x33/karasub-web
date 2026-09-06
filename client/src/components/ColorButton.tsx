@@ -1,10 +1,22 @@
-export default function ColorButton({ color }: { color: string }) {
+export default function ColorButton({
+    color,
+    onSelect,
+    selectedColorID,
+}: {
+    color: string;
+    onSelect: (e) => void;
+    selectedColorID: string;
+}) {
+    const id: string = `${color}-button`;
     return (
         <button
             style={{ backgroundColor: color }}
-            className={`p-4 rounded outline outline-outline`}
+            className={`p-4 rounded outline-2 outline-outline ${
+                selectedColorID === id ? "outline-primary" : ""
+            }`}
             key={color}
-            id={`${color}-button`}
+            id={id}
+            onClick={onSelect}
         ></button>
     );
 }
