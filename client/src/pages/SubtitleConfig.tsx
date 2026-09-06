@@ -48,10 +48,13 @@ const ConfigUI = [
 export default function SubtitleConfig() {
     return (
         <section className="flex flex-1">
-            <div className="flex flex-1 flex-col justify-between p-4">
+            <div className="flex flex-1 flex-col justify-between p-4 bg-config-bg">
                 {ConfigUI.map((section) => (
                     <div key={section.id}>
-                        <h5 className="mb-2">{section.title}</h5>
+                        <h5 className="mb-2 text-mono-label text-desc font-mono font-medium">
+                            {section.title}
+                        </h5>
+
                         <div className="flex flex-col gap-2">
                             {section.rows.map((row) => (
                                 <ColorRow
