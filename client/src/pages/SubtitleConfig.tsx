@@ -7,12 +7,12 @@ const ConfigUI = [
         title: "HIGHLIGHTED WORDS",
         rows: [
             {
-                id: 1,
+                id: "highlight-text",
                 label: "Text Color",
                 colors: ["#ffff00", "#87ceeb", "#000000"],
             },
             {
-                id: 2,
+                id: "highlight-outline",
                 label: "Outline Color",
                 colors: ["#000000", "#808080", "#ffffff"],
             },
@@ -23,12 +23,12 @@ const ConfigUI = [
         title: "OTHER WORDS",
         rows: [
             {
-                id: 1,
+                id: "other-text",
                 label: "Text Color",
                 colors: ["#ffffff", "#808080", "#000000"],
             },
             {
-                id: 2,
+                id: "other-outline",
                 label: "Outline Color",
                 colors: ["#000000", "#808080", "#ffffff"],
             },
@@ -58,6 +58,7 @@ export default function SubtitleConfig() {
                         <div className="flex flex-col gap-2">
                             {section.rows.map((row) => (
                                 <ColorRow
+                                    id={row.id}
                                     key={row.id}
                                     text={row.label}
                                     colors={row.colors}
