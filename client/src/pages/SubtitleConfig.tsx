@@ -1,4 +1,5 @@
 import ColorRow from "../components/ColorRow";
+import { useState } from "react";
 
 const ConfigUI = [
     {
@@ -36,6 +37,15 @@ const ConfigUI = [
 ];
 
 export default function SubtitleConfig() {
+    const [config, setConfig] = useState({
+        highlighted_word_color: "",
+        highlighted_word_outline_color: "",
+        other_word_color: "",
+        other_word_outline_color: "",
+        font_family: "",
+        font_size_scale: "",
+    });
+
     return (
         <section className="flex flex-1">
             <div className="flex flex-1 flex-col justify-between p-4 bg-config-bg">
@@ -51,6 +61,7 @@ export default function SubtitleConfig() {
                                     key={row.id}
                                     text={row.label}
                                     colors={row.colors}
+                                    setConfig={setConfig}
                                 />
                             ))}
                         </div>

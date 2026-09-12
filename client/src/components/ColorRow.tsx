@@ -1,7 +1,7 @@
 import ColorButton from "./ColorButton";
 import { useState } from "react";
 
-export default function ColorRow({ text, colors }) {
+export default function ColorRow({ text, colors, setConfig }) {
     const [selectedColorID, setSelectedColor] = useState(null);
 
     const handleClick = (e) => {
