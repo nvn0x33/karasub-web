@@ -1,5 +1,5 @@
 export class Theme {
-    themeKey = "theme";
+    themeKey: string = "theme";
 
     constructor() {
         if (this.getTheme() === null) {

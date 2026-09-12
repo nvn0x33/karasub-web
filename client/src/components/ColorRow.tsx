@@ -1,7 +1,8 @@
+import type { colorConfigMap } from "../types/colorConfigMap";
 import ColorButton from "./ColorButton";
 import { useEffect, useState } from "react";
 
-const keyMap = {
+const keyMap: colorConfigMap = {
     "highlight-text": "highlighted_word_color",
     "highlight-outline": "highlighted_word_outline_color",
     "other-text": "other_word_color",
@@ -9,8 +10,8 @@ const keyMap = {
 };
 
 export default function ColorRow({ id, text, colors, setConfig }) {
-    const [selectedColorID, setSelectedColorID] = useState(null);
-    const [configColor, setConfigColor] = useState("");
+    const [selectedColorID, setSelectedColorID] = useState<string | null>(null);
+    const [configColor, setConfigColor] = useState<string>("");
 
     useEffect(() => {
         if (keyMap[id]) {

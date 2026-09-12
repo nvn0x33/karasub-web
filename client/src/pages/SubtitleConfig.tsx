@@ -1,43 +1,11 @@
 import ColorRow from "../components/ColorRow";
-import { useState, useEffect } from "react";
-
-const ConfigUI = [
-    {
-        id: "highlight",
-        title: "HIGHLIGHTED WORDS",
-        rows: [
-            {
-                id: "highlight-text",
-                label: "Text Color",
-                colors: ["#ffff00", "#87ceeb", "#000000"],
-            },
-            {
-                id: "highlight-outline",
-                label: "Outline Color",
-                colors: ["#000000", "#808080", "#ffffff"],
-            },
-        ],
-    },
-    {
-        id: "other",
-        title: "OTHER WORDS",
-        rows: [
-            {
-                id: "other-text",
-                label: "Text Color",
-                colors: ["#ffffff", "#808080", "#000000"],
-            },
-            {
-                id: "other-outline",
-                label: "Outline Color",
-                colors: ["#000000", "#808080", "#ffffff"],
-            },
-        ],
-    },
-];
+import { useState } from "react";
+import { ConfigUI } from "../skeletons/ConfigUI";
+import type { subtitleConfig } from "../types/subtitleConfig";
+// import { useEffect } from "react";
 
 export default function SubtitleConfig() {
-    const [config, setConfig] = useState({
+    const [config, setConfig] = useState<subtitleConfig>({
         highlighted_word_color: "",
         highlighted_word_outline_color: "",
         other_word_color: "",
@@ -72,36 +40,6 @@ export default function SubtitleConfig() {
                         </div>
                     </div>
                 ))}
-                {/* <div className="flex justify-between">
-                    <h5 className="font-mono text-mono-label text-desc">
-                        HIGHLIGHTED WORD
-                    </h5>
-                    <div className="flex gap-4">
-                        <ColorRow
-                            text="Text Color"
-                            colors={HIGHLIGHTED_COLORS.row1}
-                        />
-                        <ColorRow
-                            text="Outline Color"
-                            colors={HIGHLIGHTED_COLORS.row2}
-                        />
-                    </div>
-                </div>
-                <div className="flex justify-between">
-                    <h5 className="font-mono text-mono-label text-desc">
-                        HIGHLIGHTED WORD
-                    </h5>
-                    <div className="flex gap-4">
-                        <ColorRow
-                            text="Text Color"
-                            colors={HIGHLIGHTED_COLORS.row1}
-                        />
-                        <ColorRow
-                            text="Outline Color"
-                            colors={HIGHLIGHTED_COLORS.row2}
-                        />
-                    </div>
-                </div> */}
             </div>
             <div className="image-preview"></div>
         </section>
