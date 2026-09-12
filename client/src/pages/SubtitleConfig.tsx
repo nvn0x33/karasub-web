@@ -1,5 +1,5 @@
 import ColorRow from "../components/ColorRow";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const ConfigUI = [
     {
@@ -45,6 +45,10 @@ export default function SubtitleConfig() {
         font_family: "",
         font_size_scale: "",
     });
+
+    // useEffect(() => {
+    //     console.log(config);
+    // }, [config]);
 
     return (
         <section className="flex flex-1">

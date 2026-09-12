@@ -1,9 +1,23 @@
 import ColorButton from "./ColorButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+const keyMap = {
+    "highlight-text": "highlighted_word_color",
+    "highlight-outline": "highlighted_word_outline_color",
+    "other-text": "other_word_color",
+    "other-outline": "other_word_outline_color",
+};
 
 export default function ColorRow({ id, text, colors, setConfig }) {
     const [selectedColorID, setSelectedColorID] = useState(null);
-    const [color, setColor] = useState("");
+    const [configColor, setConfigColor] = useState("");
+
+    useEffect(() => {
+        if (keyMap[id]) {
+            const target: string = keyMap[id];
+            setConfig((prev) => ({ ...prev, [target]: configColor }));
+        }
+    }, [configColor, id, setConfig]);
 
     return (
         <div className="flex flex-col gap-1" id={id}>
@@ -14,7 +28,7 @@ export default function ColorRow({ id, text, colors, setConfig }) {
                         color={color}
                         setSelectedColorID={setSelectedColorID}
                         selectedColorID={selectedColorID}
-                        setColor={setColor}
+                        setColor={setConfigColor}
                     />
                 ))}
             </div>
