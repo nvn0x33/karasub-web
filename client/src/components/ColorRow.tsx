@@ -1,4 +1,5 @@
 import type { colorConfigMap } from "../types/colorConfigMap";
+import type { subtitleConfig } from "../types/subtitleConfig";
 import ColorButton from "./ColorButton";
 import { useEffect, useState } from "react";
 
@@ -16,7 +17,10 @@ export default function ColorRow({ id, text, colors, setConfig }) {
     useEffect(() => {
         if (keyMap[id]) {
             const target: string = keyMap[id];
-            setConfig((prev) => ({ ...prev, [target]: configColor }));
+            setConfig((prev: subtitleConfig) => ({
+                ...prev,
+                [target]: configColor,
+            }));
         }
     }, [configColor, id, setConfig]);
 

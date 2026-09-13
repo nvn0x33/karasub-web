@@ -2,6 +2,7 @@ import ColorRow from "../components/ColorRow";
 import { useState } from "react";
 import { ConfigUI } from "../skeletons/ConfigUI";
 import type { subtitleConfig } from "../types/subtitleConfig";
+import FontFamily from "../components/FontFamily";
 // import { useEffect } from "react";
 
 export default function SubtitleConfig() {
@@ -40,6 +41,20 @@ export default function SubtitleConfig() {
                         </div>
                     </div>
                 ))}
+                {/* typography */}
+                <div>
+                    <h5 className="mb-2 text-mono-label text-desc font-mono font-medium">
+                        TYPOGRAPHY
+                    </h5>
+                    <div className="flex flex-col gap-4">
+                        <FontFamily setConfig={setConfig} />
+                        <div className="flex flex-col gap-1">
+                            <h6 className="text-size-desc text-headline">
+                                Font Size Scale
+                            </h6>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div className="image-preview"></div>
         </section>
