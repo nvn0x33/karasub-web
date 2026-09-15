@@ -31,8 +31,10 @@ export default function FontFamily({ setConfig }) {
                 <label htmlFor="font-family">Font Family</label>
             </h6>
             <select name="font-family" id="font-family" onChange={handleChange}>
-                {SUPPORTED_FONTS.map((font) => (
-                    <option value={font.value}>{font.displayName}</option>
+                {SUPPORTED_FONTS.map((font, index: number) => (
+                    <option key={index} value={font.value}>
+                        {font.displayName}
+                    </option>
                 ))}
             </select>
         </div>

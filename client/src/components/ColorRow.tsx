@@ -30,6 +30,7 @@ export default function ColorRow({ id, text, colors, setConfig }) {
             <div className="flex gap-1">
                 {colors.map((color: string) => (
                     <ColorButton
+                        key={color}
                         color={color}
                         setSelectedColorID={setSelectedColorID}
                         selectedColorID={selectedColorID}
