@@ -3,6 +3,9 @@
 @import "tailwindcss";
 
 @theme static {
+    /* BREAKPOINTS */
+    --breakpoint-tablet-lg: 900px;
+
     /* INTER FONT */
     --text-size-desc: 0.875rem;
     --text-size-headline: 1.5rem;
