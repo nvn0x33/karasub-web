@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ConfigUI } from "../skeletons/ConfigUI";
 import type { subtitleConfig } from "../types/subtitleConfig";
 import FontFamily from "../components/FontFamily";
+import FontSizeScaler from "../components/FontSizeScaler";
 // import { useEffect } from "react";
 
 export default function SubtitleConfig() {
@@ -48,11 +49,7 @@ export default function SubtitleConfig() {
                     </h5>
                     <div className="flex flex-col gap-4">
                         <FontFamily setConfig={setConfig} />
-                        <div className="flex flex-col gap-1">
-                            <h6 className="text-size-desc text-headline">
-                                Font Size Scale
-                            </h6>
-                        </div>
+                        <FontSizeScaler setConfig={setConfig} />
                     </div>
                 </div>
             </div>
