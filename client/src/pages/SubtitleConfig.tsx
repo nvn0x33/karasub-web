@@ -4,6 +4,7 @@ import { ConfigUI } from "../skeletons/ConfigUI";
 import type { subtitleConfig } from "../types/subtitleConfig";
 import FontFamily from "../components/FontFamily";
 import FontSizeScaler from "../components/FontSizeScaler";
+import PrimaryButton from "../components/PrimaryButton";
 // import { useEffect } from "react";
 
 export default function SubtitleConfig() {
@@ -15,6 +16,8 @@ export default function SubtitleConfig() {
         font_family: "",
         font_size_scale: "",
     });
+
+    const uploadConfig = () => {};
 
     // useEffect(() => {
     //     console.log(config);
@@ -52,6 +55,10 @@ export default function SubtitleConfig() {
                         <FontSizeScaler setConfig={setConfig} />
                     </div>
                 </div>
+                <PrimaryButton
+                    text="GENERATE VIDEO"
+                    handleClick={uploadConfig}
+                />
             </div>
             <div className="image-preview"></div>
         </section>
