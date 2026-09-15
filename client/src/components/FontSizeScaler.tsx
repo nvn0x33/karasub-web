@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import type { subtitleConfig } from "../types/subtitleConfig";
 
 // font = min(width, height) * 0.06 * Scale;
 const MAX: number = 5.0;
@@ -6,6 +7,13 @@ const MIN: number = 0.1;
 
 export default function FontSizeScaler({ setConfig }) {
     const [value, setValue] = useState<number>(1.0);
+
+    useEffect(() => {
+        setConfig((prev: subtitleConfig) => ({
+            ...prev,
+            font_size_scale: value,
+        }));
+    }, [value, setConfig]);
 
     return (
         <div className="flex flex-col gap-1">
