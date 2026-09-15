@@ -58,6 +58,7 @@ export default function SubtitleConfig() {
                 <PrimaryButton
                     text="GENERATE VIDEO"
                     handleClick={uploadConfig}
+                    style={{ paddingInline: 0 }}
                 />
             </div>
             <div className="image-preview"></div>
