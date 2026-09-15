@@ -25,7 +25,7 @@ export default function SubtitleConfig() {
 
     return (
         <section className="flex flex-1 max-tablet-lg:flex-col">
-            <div className="flex flex-col justify-between p-4 bg-config-bg max-tablet-lg:flex-1 tablet-lg:w-1/6">
+            <div className="flex flex-col justify-between p-4 bg-config-bg max-tablet-lg:flex-1 tablet-lg:w-1/5">
                 {ConfigUI.map((section) => (
                     <div key={section.id}>
                         <h5 className="mb-2 text-mono-label text-desc font-mono font-medium">

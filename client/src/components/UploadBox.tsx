@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useRef } from "react";
 import { Upload } from "lucide-react";
 
 import HeadDesc from "./HeadDesc";
@@ -9,6 +9,7 @@ import { PageContext } from "../contexts";
 export default function UploadBox() {
     const [hover, setHover] = useState<boolean>(false);
     const nextPage = useContext(PageContext);
+    const uploadInput = useRef(null);
 
     const handleFileUpload = (files: FileList) => {
         const file: File = files[0];
@@ -16,11 +17,16 @@ export default function UploadBox() {
         if (!file || !file.type.includes("video")) {
             alert("The uploaded video is not valid!");
             return;
+        } else {
+            console.log(file.type);
         }
 
         // Upload the file to backend here.
 
         nextPage();
+    };
+    const handleClick = () => {
+        uploadInput.current.click();
     };
     return (
         <div
@@ -53,6 +59,7 @@ export default function UploadBox() {
                     desc="or click to browse your device"
                 />
                 <input
+                    ref={uploadInput}
                     onChange={(e) => {
                         handleFileUpload(e.target.files);
                     }}
@@ -63,9 +70,8 @@ export default function UploadBox() {
                 />
                 <PrimaryButton
                     text="SELECT FILE"
-                    handleClick={() => {}}
+                    handleClick={handleClick}
                     id="videoInput"
-                    htmlFor="videoInput"
                 />
                 <SupportedFormats />
             </div>
