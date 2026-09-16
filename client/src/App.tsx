@@ -23,9 +23,9 @@ function App() {
             <Header />
             <PageContext value={changePage}>
                 <main className="outline outline-outline flex flex-col flex-1">
-                    {pages[pageIndex] === "upload" && <UploadScreen />}
-                    {pages[pageIndex] === "config" && <SubtitleConfig />}
-                    {/* <SubtitleConfig /> */}
+                    {/* {pages[pageIndex] === "upload" && <UploadScreen />}
+                    {pages[pageIndex] === "config" && <SubtitleConfig />} */}
+                    <SubtitleConfig />
                 </main>
             </PageContext>
         </div>

@@ -1,6 +1,8 @@
 import type { colorConfigMap } from "../types/colorConfigMap";
 import type { subtitleConfig } from "../types/subtitleConfig";
 import ColorButton from "./ColorButton";
+import ColorInputButton from "./ColorInputButton";
+
 import { useEffect, useState } from "react";
 
 const keyMap: colorConfigMap = {
@@ -37,6 +39,12 @@ export default function ColorRow({ id, text, colors, setConfig }) {
                         setColor={setConfigColor}
                     />
                 ))}
+                <ColorInputButton
+                    rowID={id}
+                    setSelectedColorID={setSelectedColorID}
+                    selectedColorID={selectedColorID}
+                    setColor={setConfigColor}
+                />
             </div>
         </div>
     );
