@@ -43,7 +43,7 @@ export default function ColorRow({ id, text, colors, setConfig }) {
                     rowID={id}
                     setSelectedColorID={setSelectedColorID}
                     selectedColorID={selectedColorID}
-                    setColor={setConfigColor}
+                    setConfigColor={setConfigColor}
                 />
             </div>
         </div>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PageContext } from "./contexts";
+import { PageContext, VidResolution } from "./contexts";
 
 import Header from "./components/Header";
 import UploadScreen from "./pages/UploadScreen";
@@ -9,6 +9,7 @@ const pages: string[] = ["upload", "config", "processing", "download"];
 
 function App() {
     const [pageIndex, setPageIndex] = useState<number>(0);
+    const [resolution, setResolution] = useState({ width: 0, height: 0 });
 
     const changePage = () => {
         setPageIndex((prev) => {
@@ -22,11 +23,13 @@ function App() {
         <div className="flex flex-col min-h-dvh">
             <Header />
             <PageContext value={changePage}>
-                <main className="outline outline-outline flex flex-col flex-1">
-                    {/* {pages[pageIndex] === "upload" && <UploadScreen />}
-                    {pages[pageIndex] === "config" && <SubtitleConfig />} */}
-                    <SubtitleConfig />
-                </main>
+                <VidResolution value={{ resolution, setResolution }}>
+                    <main className="outline outline-outline flex flex-col flex-1">
+                        {pages[pageIndex] === "upload" && <UploadScreen />}
+                        {pages[pageIndex] === "config" && <SubtitleConfig />}
+                        {/* <SubtitleConfig /> */}
+                    </main>
+                </VidResolution>
             </PageContext>
         </div>
     );

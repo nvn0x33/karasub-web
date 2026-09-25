@@ -4,12 +4,28 @@ import { Upload } from "lucide-react";
 import HeadDesc from "./HeadDesc";
 import PrimaryButton from "./PrimaryButton";
 import SupportedFormats from "./SupportedFormats";
-import { PageContext } from "../contexts";
+import { PageContext, VidResolution } from "../contexts";
 
 export default function UploadBox() {
     const [hover, setHover] = useState<boolean>(false);
     const nextPage = useContext(PageContext);
+    const { _, setResolution } = useContext(VidResolution);
     const uploadInput = useRef(null);
+
+    const getResolution = (file: File) => {
+        const vidUrl = URL.createObjectURL(file);
+
+        const video = document.createElement("video");
+        video.src = vidUrl;
+
+        video.onloadeddata = () => {
+            setResolution({
+                width: video.videoWidth,
+                height: video.videoHeight,
+            });
+            URL.revokeObjectURL(vidUrl);
+        };
+    };
 
     const handleFileUpload = (files: FileList) => {
         const file: File = files[0];
@@ -17,9 +33,8 @@ export default function UploadBox() {
         if (!file || !file.type.includes("video")) {
             alert("The uploaded video is not valid!");
             return;
-        } else {
-            console.log(file.type);
         }
+        getResolution(file);
 
         // Upload the file to backend here.
 
@@ -28,6 +43,7 @@ export default function UploadBox() {
     const handleClick = () => {
         uploadInput.current.click();
     };
+
     return (
         <div
             onDragEnter={() => {
