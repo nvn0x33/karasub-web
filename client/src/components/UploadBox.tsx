@@ -4,12 +4,12 @@ import { Upload } from "lucide-react";
 import HeadDesc from "./HeadDesc";
 import PrimaryButton from "./PrimaryButton";
 import SupportedFormats from "./SupportedFormats";
-import { PageContext, VidResolution } from "../contexts";
+import { PageContext, VidList } from "../contexts";
 
 export default function UploadBox() {
     const [hover, setHover] = useState<boolean>(false);
     const nextPage = useContext(PageContext);
-    // const { _, setResolution } = useContext(VidResolution);
+    const { _, setVideos } = useContext(VidList);
     const uploadInput = useRef(null);
 
     const getResolution = (file: File) => {
@@ -49,6 +49,7 @@ export default function UploadBox() {
 
             vidDetails.push(videoData);
         });
+        setVideos(vidDetails);
 
         nextPage();
     };
