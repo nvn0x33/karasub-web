@@ -9,34 +9,46 @@ import { PageContext, VidResolution } from "../contexts";
 export default function UploadBox() {
     const [hover, setHover] = useState<boolean>(false);
     const nextPage = useContext(PageContext);
-    const { _, setResolution } = useContext(VidResolution);
+    // const { _, setResolution } = useContext(VidResolution);
     const uploadInput = useRef(null);
 
     const getResolution = (file: File) => {
+        let width: number;
+        let height: number;
+
         const vidUrl = URL.createObjectURL(file);
 
         const video = document.createElement("video");
         video.src = vidUrl;
 
         video.onloadeddata = () => {
-            setResolution({
-                width: video.videoWidth,
-                height: video.videoHeight,
-            });
+            width = video.videoWidth;
+            height = video.videoHeight;
             URL.revokeObjectURL(vidUrl);
         };
+
+        return [width, height];
     };
 
     const handleFileUpload = (files: FileList) => {
-        const file: File = files[0];
+        // const file: File = files[0];
+        const vidDetails = [];
 
-        if (!file || !file.type.includes("video")) {
-            alert("The uploaded video is not valid!");
-            return;
-        }
-        getResolution(file);
+        Array.from(files).forEach((file: File) => {
+            if (!file || !file.type.includes("video")) {
+                // alert("The uploaded video is not valid!");
+                return;
+            }
+            const [width, height] = getResolution(file);
+            const videoData = {
+                id: crypto.randomUUID(),
+                vidFile: file,
+                width: width,
+                height: height,
+            };
 
-        // Upload the file to backend here.
+            vidDetails.push(videoData);
+        });
 
         nextPage();
     };
