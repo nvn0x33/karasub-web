@@ -7,6 +7,7 @@ import type { subtitleConfig } from "../types/subtitleConfig";
 import FontFamily from "../components/FontFamily";
 import FontSizeScaler from "../components/FontSizeScaler";
 import PrimaryButton from "../components/PrimaryButton";
+import FontPreview from "../components/FontPreview";
 // import { useEffect } from "react";
 
 export default function SubtitleConfig() {
@@ -69,7 +70,11 @@ export default function SubtitleConfig() {
                             style={{ paddingInline: 0 }}
                         />
                     </div>
-                    <div className="image-preview"></div>
+                    <FontPreview
+                        width={video.width}
+                        height={video.height}
+                        font_scale={config.font_size_scale}
+                    />
                 </div>
             ))}
         </section>
