@@ -9,7 +9,7 @@ import { PageContext, VidList } from "../contexts";
 export default function UploadBox() {
     const [hover, setHover] = useState<boolean>(false);
     const nextPage = useContext(PageContext);
-    const { _, setVideos } = useContext(VidList);
+    const { setVideos } = useContext(VidList);
     const uploadInput = useRef(null);
 
     const getResolution = (file: File) => {
