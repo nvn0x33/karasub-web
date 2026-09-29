@@ -20,7 +20,7 @@ function App() {
         });
     };
     return (
-        <div className="flex flex-col min-h-dvh">
+        <div className="flex flex-col h-dvh">
             <Header />
             <PageContext value={changePage}>
                 <VidList value={{ videos, setVideos }}>
