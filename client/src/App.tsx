@@ -9,7 +9,7 @@ const pages: string[] = ["upload", "config", "processing", "download"];
 
 function App() {
     const [pageIndex, setPageIndex] = useState<number>(0);
-    const [videos, setVideos] = useState(null);
+    const [videos, setVideos] = useState([]);
 
     const changePage = () => {
         setPageIndex((prev) => {

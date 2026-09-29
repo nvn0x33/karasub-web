@@ -16,7 +16,7 @@ export default function SubtitleConfig() {
     return (
         <section className="flex flex-1 max-tablet-lg:flex-col">
             {videos.map((video) => (
-                <VideoConfig video={video} />
+                <VideoConfig video={video} key={video.id} />
             ))}
         </section>
     );
@@ -34,9 +34,10 @@ function VideoConfig({ video }) {
     // useEffect(() => {
     //     console.log(config);
     // }, [config]);
+    // console.log("In the subtitle conf page: " + video.width);
     const uploadConfig = () => {};
     return (
-        <div className="flex flex-1 max-tablet-lg:flex-col" key={video.id}>
+        <div className="flex flex-1 max-tablet-lg:flex-col">
             <div className="flex flex-col justify-between p-4 bg-config-bg max-tablet-lg:flex-1 tablet-lg:w-1/5">
                 {ConfigUI.map((section) => (
                     <div key={section.id}>

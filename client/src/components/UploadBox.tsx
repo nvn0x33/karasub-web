@@ -12,45 +12,50 @@ export default function UploadBox() {
     const { setVideos } = useContext(VidList);
     const uploadInput = useRef(null);
 
-    const getResolution = (file: File) => {
-        let width: number;
-        let height: number;
+    const getResolution = async (file: File) => {
+        return new Promise((resolve) => {
+            let width: number;
+            let height: number;
 
-        const vidUrl = URL.createObjectURL(file);
+            const vidUrl = URL.createObjectURL(file);
 
-        const video = document.createElement("video");
-        video.src = vidUrl;
+            const video = document.createElement("video");
+            video.src = vidUrl;
 
-        video.onloadeddata = () => {
-            width = video.videoWidth;
-            height = video.videoHeight;
-            URL.revokeObjectURL(vidUrl);
-        };
+            video.onloadeddata = () => {
+                width = video.videoWidth;
+                height = video.videoHeight;
 
-        return [width, height];
+                URL.revokeObjectURL(vidUrl);
+                resolve([width, height]);
+            };
+        });
     };
 
-    const handleFileUpload = (files: FileList) => {
-        // const file: File = files[0];
-        const vidDetails = [];
+    const handleFileUpload = async (files: FileList) => {
+        const videoFiles = Array.from(files).filter(
+            (file) => file && file.type.includes("video")
+        );
 
-        Array.from(files).forEach((file: File) => {
-            if (!file || !file.type.includes("video")) {
-                // alert("The uploaded video is not valid!");
-                return;
+        const results = await Promise.allSettled(
+            videoFiles.map(async (video) => {
+                const resolution = await getResolution(video);
+                return {
+                    id: crypto.randomUUID(),
+                    vidFile: video,
+                    width: resolution[0],
+                    height: resolution[1],
+                };
+            })
+        );
+
+        const vidDetails = results.map((result) => {
+            if (result.status === "fulfilled") {
+                return result.value;
             }
-            const [width, height] = getResolution(file);
-            const videoData = {
-                id: crypto.randomUUID(),
-                vidFile: file,
-                width: width,
-                height: height,
-            };
-
-            vidDetails.push(videoData);
         });
-        setVideos(vidDetails);
 
+        setVideos(vidDetails);
         nextPage();
     };
     const handleClick = () => {
