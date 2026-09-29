@@ -7,9 +7,8 @@ export default function FontPreview({ width, height, font_scale }) {
     const divWidth: string = `${width}px`;
     const divHeight: string = `${height}px`;
 
-    // console.log(width);
     return (
-        <div className="flex">
+        <div className="block p-10 min-w-0">
             <div
                 style={{ width: divWidth, height: divHeight }}
                 className="bg-amber-800 text-center"
