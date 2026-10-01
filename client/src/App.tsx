@@ -24,7 +24,7 @@ function App() {
             <Header />
             <PageContext value={changePage}>
                 <VidList value={{ videos, setVideos }}>
-                    <main className="outline outline-outline flex flex-col h-full">
+                    <main className="outline outline-outline flex flex-col flex-1 min-h-0 overflow-auto">
                         {pages[pageIndex] === "upload" && <UploadScreen />}
                         {pages[pageIndex] === "config" && <SubtitleConfig />}
                         {/* <SubtitleConfig /> */}
