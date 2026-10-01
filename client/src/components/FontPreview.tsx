@@ -20,7 +20,7 @@ export default function FontPreview({ width, height, config }) {
 
     return (
         /* Use Canvas */
-        <div className="p-5 max-h-full flex-1 max-tablet-lg:p-4 flex items-center justify-center bg-bg">
+        <div className="p-5 tablet-lg:h-full flex-1 max-tablet-lg:p-4 flex items-center justify-center bg-bg">
             <canvas
                 ref={ctxRef}
                 width={width}
