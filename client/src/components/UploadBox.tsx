@@ -13,7 +13,7 @@ export default function UploadBox() {
     const uploadInput = useRef(null);
 
     const getResolution = async (file: File) => {
-        return new Promise((resolve) => {
+        return new Promise((resolve, reject) => {
             let width: number;
             let height: number;
 
@@ -28,6 +28,11 @@ export default function UploadBox() {
 
                 URL.revokeObjectURL(vidUrl);
                 resolve([width, height]);
+            };
+
+            video.onerror = () => {
+                URL.revokeObjectURL(vidUrl);
+                reject(new Error("Invalid or Corrupted video file!"));
             };
         });
     };
