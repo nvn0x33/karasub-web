@@ -1,6 +1,6 @@
 import { useState, useContext, useRef } from "react";
 import { Upload } from "lucide-react";
-
+import { v4 as uuidv4 } from "uuid";
 import HeadDesc from "./HeadDesc";
 import PrimaryButton from "./PrimaryButton";
 import SupportedFormats from "./SupportedFormats";
@@ -40,8 +40,9 @@ export default function UploadBox() {
         const results = await Promise.allSettled(
             videoFiles.map(async (video) => {
                 const resolution = await getResolution(video);
+
                 return {
-                    id: crypto.randomUUID(),
+                    id: uuidv4(),
                     vidFile: video,
                     width: resolution[0],
                     height: resolution[1],
@@ -49,11 +50,9 @@ export default function UploadBox() {
             })
         );
 
-        const vidDetails = results.map((result) => {
-            if (result.status === "fulfilled") {
-                return result.value;
-            }
-        });
+        const vidDetails = results
+            .filter((result) => result.status === "fulfilled")
+            .map((fulfilledResult) => fulfilledResult.value);
 
         setVideos(vidDetails);
         nextPage();
