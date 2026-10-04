@@ -22,7 +22,7 @@ export default function UploadBox() {
             const video = document.createElement("video");
             video.src = vidUrl;
 
-            video.onloadeddata = () => {
+            video.onloadedmetadata = () => {
                 width = video.videoWidth;
                 height = video.videoHeight;
 
