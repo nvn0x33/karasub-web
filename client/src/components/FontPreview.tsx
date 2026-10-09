@@ -13,13 +13,17 @@ export default function FontPreview({ width, height, config }) {
 
         const textConfig = {
             x: 0,
-            y: 0,
+            y: 10,
             height: ctxRef.current.height - 20,
             width: ctxRef.current.width - 20,
             align: "center",
             vAlign: "bottom",
             fontSize: fontScale,
+            style: {
+                fill: config.other_word_color || "black",
+            },
         } as const;
+        console.log("other word color = ", config.other_word_color);
         const text: string = "The quick brown fox jumps over the lazy dog.";
 
         img.onload = () => {
@@ -27,7 +31,7 @@ export default function FontPreview({ width, height, config }) {
             drawText(ctx, text, textConfig);
         };
         img.src = Preview;
-    }, [width, height, fontScale]);
+    }, [width, height, fontScale, config]);
 
     return (
         /* Use Canvas */
@@ -36,7 +40,7 @@ export default function FontPreview({ width, height, config }) {
                 ref={ctxRef}
                 width={width}
                 height={height}
-                className="h-full"
+                className="max-h-full max-w-full"
             ></canvas>
         </div>
     );
