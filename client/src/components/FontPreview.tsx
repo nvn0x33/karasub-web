@@ -11,16 +11,20 @@ export default function FontPreview({ width, height, config }) {
         const ctx = ctxRef.current.getContext("2d");
         const img = new Image();
 
+        const textConfig = {
+            x: 0,
+            y: 0,
+            height: ctxRef.current.height - 20,
+            width: ctxRef.current.width - 20,
+            align: "center",
+            vAlign: "bottom",
+            fontSize: fontScale,
+        } as const;
+        const text: string = "The quick brown fox jumps over the lazy dog.";
+
         img.onload = () => {
             ctx.drawImage(img, 0, 0, width, height);
-            ctx.font = `${fontScale}px Arial`;
-            ctx.fillStyle = "black";
-            ctx.textAlign = "center";
-            ctx.fillText(
-                "The quick brown fox jumps over the lazy dog.",
-                ctxRef.current.width / 2,
-                ctxRef.current.height - 50
-            );
+            drawText(ctx, text, textConfig);
         };
         img.src = Preview;
     }, [width, height, fontScale]);
