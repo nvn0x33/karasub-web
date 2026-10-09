@@ -1,12 +1,11 @@
 // font = min(width, height) * 0.06 * Scale;
 import { useEffect, useRef } from "react";
+import { drawText } from "canvas-txt";
 import Preview from "../assets/preview-image.webp";
 
 export default function FontPreview({ width, height, config }) {
     const fontScale = Math.min(width, height) * 0.06 * config.font_size_scale;
     const ctxRef = useRef(null);
-    // const divWidth: string = `${width}px`;
-    // const divHeight: string = `${height}px`;
 
     useEffect(() => {
         const ctx = ctxRef.current.getContext("2d");
@@ -14,9 +13,17 @@ export default function FontPreview({ width, height, config }) {
 
         img.onload = () => {
             ctx.drawImage(img, 0, 0, width, height);
+            ctx.font = `${fontScale}px Arial`;
+            ctx.fillStyle = "black";
+            ctx.textAlign = "center";
+            ctx.fillText(
+                "The quick brown fox jumps over the lazy dog.",
+                ctxRef.current.width / 2,
+                ctxRef.current.height - 50
+            );
         };
         img.src = Preview;
-    }, [width, height]);
+    }, [width, height, fontScale]);
 
     return (
         /* Use Canvas */
@@ -25,7 +32,7 @@ export default function FontPreview({ width, height, config }) {
                 ref={ctxRef}
                 width={width}
                 height={height}
-                className="max-w-full max-h-full"
+                className="h-full"
             ></canvas>
         </div>
     );
