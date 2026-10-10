@@ -7,7 +7,7 @@ import type { subtitleConfig } from "../types/subtitleConfig";
 import FontFamily from "../components/FontFamily";
 import FontSizeScaler from "../components/FontSizeScaler";
 import PrimaryButton from "../components/PrimaryButton";
-import FontPreview from "../components/FontPreview";
+// import FontPreview from "../components/FontPreview";
 // import { useEffect } from "react";
 
 export default function SubtitleConfig() {
@@ -39,7 +39,7 @@ function VideoConfig() {
     const uploadConfig = () => {};
     return (
         <>
-            <div className="flex shrink-0 flex-col justify-between p-4 bg-config-bg h-full tablet-lg:w-1/5">
+            <div className="flex shrink-0 flex-col gap-10 p-4 bg-config-bg h-full tablet-lg:w-1/5">
                 {ConfigUI.map((section) => (
                     <div key={section.id}>
                         <h5 className="mb-2 text-mono-label text-desc font-mono font-medium">
@@ -62,7 +62,7 @@ function VideoConfig() {
                 {/* typography */}
                 <div>
                     <h5 className="mb-2 text-mono-label text-desc font-mono font-medium">
-                        TYPOGRAPHY
+                        TYPOGRAPHY & FORMATTING
                     </h5>
                     <div className="flex flex-col gap-4">
                         <FontFamily setConfig={setConfig} />
