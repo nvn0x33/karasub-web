@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import type { subtitleConfig } from "../types/subtitleConfig";
 import PrimaryButton from "./PrimaryButton";
+import SecondaryButton from "./SecondaryButton";
 
 const SUPPORTED_FONTS = [
     {
@@ -29,13 +30,22 @@ export default function FontFamily({ setConfig }) {
     };
 
     return (
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-2">
             <h6 className="text-size-desc text-headline">
                 <label htmlFor="font-family">Font Family</label>
             </h6>
-            <select name="font-family" id="font-family" onChange={handleChange}>
+            <select
+                className="text-size-desc border-2 border-outline p-1 text-desc"
+                name="font-family"
+                id="font-family"
+                onChange={handleChange}
+            >
                 {fontList.map((font, index: number) => (
-                    <option key={index} value={font.value}>
+                    <option
+                        className="text-size-desc"
+                        key={index}
+                        value={font.value}
+                    >
                         {font.displayName}
                     </option>
                 ))}
@@ -63,7 +73,7 @@ function UploadFont(setFontList) {
                     accept=".ttf,.otf,.ttc"
                     hidden
                 />
-                <PrimaryButton
+                <SecondaryButton
                     text="SELECT FILE"
                     handleClick={handleClick}
                     id="fontInput"
