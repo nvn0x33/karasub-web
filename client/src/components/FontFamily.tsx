@@ -1,9 +1,8 @@
 // import { useEffect } from "react";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import type { subtitleConfig } from "../types/subtitleConfig";
-import PrimaryButton from "./PrimaryButton";
-import SecondaryButton from "./SecondaryButton";
+import UploadFont from "./UploadFont";
 
 const SUPPORTED_FONTS = [
     {
@@ -51,34 +50,6 @@ export default function FontFamily({ setConfig }) {
                 ))}
             </select>
             <UploadFont setFontList={setFontList} />
-        </div>
-    );
-}
-
-function UploadFont(setFontList) {
-    const fontInput = useRef(null);
-    const handleClick = () => {
-        fontInput.current.click();
-    };
-    return (
-        <div>
-            <div>
-                <input
-                    ref={fontInput}
-                    onChange={(e) => {
-                        handleFileUpload(e.target.files);
-                    }}
-                    type="file"
-                    id="fontInput"
-                    accept=".ttf,.otf,.ttc"
-                    hidden
-                />
-                <SecondaryButton
-                    text="SELECT FILE"
-                    handleClick={handleClick}
-                    id="fontInput"
-                />
-            </div>
         </div>
     );
 }
