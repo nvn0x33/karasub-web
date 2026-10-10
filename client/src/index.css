@@ -26,6 +26,7 @@
     --color-headline: #191b24;
     --color-desc: #44474e;
     --color-outline: #d1d5db;
+    --color-bg-file: #f0f2fb;
 
     /* FONTS */
     --font-sans: "Inter Variable", sans-serif;
@@ -38,6 +39,7 @@
     --color-headline: #e5e2e1;
     --color-desc: #c2c6d8;
     --color-outline: #364153;
+    --color-bg-file: #181a21;
 }
 :root {
     text-rendering: optimizeLegibility;

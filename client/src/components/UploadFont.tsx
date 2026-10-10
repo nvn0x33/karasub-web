@@ -52,20 +52,14 @@ export default function UploadFont({ setFontList }) {
                     accept=".ttf,.otf,.ttc"
                     hidden
                 />
-                {/* <SecondaryButton
-                    text="SELECT FILE"
-                    handleClick={handleClick}
-                    
-                /> */}
                 <button
-                    className="flex items-center gap-2 w-full  border-2 border-dotted border-outline p-2 hover:bg-desc/20"
+                    className="flex items-center gap-2 w-full border-2 border-dotted border-outline bg-bg-file p-2 hover:bg-desc/10"
                     onClick={handleClick}
                     id="fontInput"
                 >
-                    <Plus
-                        className="text-primary bg-desc/10 rounded "
-                        size={24}
-                    />
+                    <span className="p-1 bg-desc/10 rounded">
+                        <Plus className="text-primary " size={20} />
+                    </span>
                     <span className="text-size-desc overflow-hidden text-desc ">
                         Add Custom Font
                     </span>
@@ -74,7 +68,7 @@ export default function UploadFont({ setFontList }) {
         );
     }
     return (
-        <div className="flex items-center justify-between border-2 border-outline p-2">
+        <div className="flex items-center justify-between border-2 border-outline p-2  bg-bg-file">
             <div className="flex gap-4 items-center">
                 <ALargeSmall className="text-primary" />
                 <span className="text-[0.8rem] overflow-hidden text-desc">
@@ -82,6 +76,7 @@ export default function UploadFont({ setFontList }) {
                 </span>
             </div>
             <button
+                className="hover:bg-desc/10 p-1"
                 onClick={() => {
                     setFontUpload(null);
                     setFontList((prev) => {
