@@ -10,12 +10,14 @@ export default function FontPreview({ width, height, config }) {
     useEffect(() => {
         const ctx = ctxRef.current.getContext("2d");
         const img = new Image();
+        const marginX: number = 10;
+        const marginY: number = 40;
 
         const textConfig = {
-            x: 0,
-            y: 10,
-            height: ctxRef.current.height - 20,
-            width: ctxRef.current.width - 20,
+            x: marginX,
+            y: marginY,
+            height: ctxRef.current.height - marginY,
+            width: ctxRef.current.width - marginX,
             align: "center",
             vAlign: "bottom",
             fontSize: fontScale,
@@ -23,7 +25,7 @@ export default function FontPreview({ width, height, config }) {
                 fill: config.other_word_color || "black",
             },
         } as const;
-        console.log("other word color = ", config.other_word_color);
+
         const text: string = "The quick brown fox jumps over the lazy dog.";
 
         img.onload = () => {
@@ -36,12 +38,12 @@ export default function FontPreview({ width, height, config }) {
     return (
         /* Use Canvas */
         <div className="p-5 tablet-lg:h-full flex-1 max-tablet-lg:p-4 flex items-center justify-center bg-bg">
-            <canvas
+            {/* <canvas
                 ref={ctxRef}
                 width={width}
                 height={height}
                 className="max-h-full max-w-full"
-            ></canvas>
+            ></canvas> */}
         </div>
     );
 }

@@ -15,14 +15,15 @@ export default function SubtitleConfig() {
 
     return (
         <section className="flex max-tablet-lg:flex-col h-full">
-            {videos.map((video) => (
+            {/* {videos.map((video) => (
                 <VideoConfig video={video} key={video.id} />
-            ))}
+            ))} */}
+            <VideoConfig />
         </section>
     );
 }
 
-function VideoConfig({ video }) {
+function VideoConfig() {
     const [config, setConfig] = useState<subtitleConfig>({
         highlighted_word_color: "",
         highlighted_word_outline_color: "",
@@ -74,11 +75,12 @@ function VideoConfig({ video }) {
                     style={{ paddingInline: 0 }}
                 />
             </div>
-            <FontPreview
+            <div></div>
+            {/* <FontPreview
                 width={video.width}
                 height={video.height}
                 config={config}
-            />
+            /> */}
         </>
     );
 }
