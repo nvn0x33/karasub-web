@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { ALargeSmall, Trash } from "lucide-react";
+import { ALargeSmall, Trash, Plus } from "lucide-react";
 import SecondaryButton from "./SecondaryButton";
 
 export default function UploadFont({ setFontList }) {
@@ -52,11 +52,24 @@ export default function UploadFont({ setFontList }) {
                     accept=".ttf,.otf,.ttc"
                     hidden
                 />
-                <SecondaryButton
+                {/* <SecondaryButton
                     text="SELECT FILE"
                     handleClick={handleClick}
+                    
+                /> */}
+                <button
+                    className="flex items-center gap-2 w-full  border-2 border-dotted border-outline p-2 hover:bg-desc/20"
+                    onClick={handleClick}
                     id="fontInput"
-                />
+                >
+                    <Plus
+                        className="text-primary bg-desc/10 rounded "
+                        size={24}
+                    />
+                    <span className="text-size-desc overflow-hidden text-desc ">
+                        Add Custom Font
+                    </span>
+                </button>
             </div>
         );
     }
