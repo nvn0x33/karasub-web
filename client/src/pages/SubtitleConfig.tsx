@@ -40,7 +40,7 @@ function VideoConfig() {
     return (
         <>
             <div className="flex flex-col p-4 gap-2 justify-between bg-config-bg h-full tablet-lg:w-1/5 min-h-0">
-                <div className="flex flex-col gap-10 overflow-y-scroll scrollbar-none min-h-0">
+                <div className="flex flex-col gap-10 overflow-y-scroll scrollbar-none min-h-0 p-1">
                     {ConfigUI.map((section) => (
                         <div key={section.id}>
                             <h5 className="mb-2 text-mono-label text-desc font-mono font-medium">
