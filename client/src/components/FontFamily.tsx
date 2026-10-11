@@ -34,7 +34,7 @@ export default function FontFamily({ setConfig }) {
                 <label htmlFor="font-family">Font Family</label>
             </h6>
             <select
-                className="text-size-desc border-2 border-outline p-1 text-desc"
+                className="text-size-desc border-2 border-outline p-1 text-desc bg-config-bg"
                 name="font-family"
                 id="font-family"
                 onChange={handleChange}
