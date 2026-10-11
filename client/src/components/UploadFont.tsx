@@ -67,12 +67,18 @@ export default function UploadFont({ setFontList }) {
         );
     }
     return (
-        <div className="flex items-center justify-between max-w-full border-2 border-outline p-2  bg-bg-file">
-            <div className="flex gap-1 items-center min-w-0">
+        <div className="flex items-center justify-between gap-1 max-w-full border-2 border-outline p-2  bg-bg-file">
+            <div className="flex gap-2 items-center min-w-0">
                 <ALargeSmall className="text-primary shrink-0" />
-                <span className="text-[0.8rem] text-desc truncate">
-                    {fontUpload.name}
-                </span>
+
+                <div className="text-desc truncate flex flex-col-reverse items-start gap-1">
+                    <span className="text-[0.6rem] text-desc p-1 bg-desc/8">
+                        {(fontUpload.size / 1000000).toFixed(2)} MB
+                    </span>
+                    <span className="text-[0.8rem] text-desc">
+                        {fontUpload.name}
+                    </span>
+                </div>
             </div>
             <button
                 className="hover:bg-desc/10 p-1"
