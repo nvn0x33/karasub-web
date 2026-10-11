@@ -39,34 +39,36 @@ function VideoConfig() {
     const uploadConfig = () => {};
     return (
         <>
-            <div className="flex shrink-0 flex-col gap-10 p-4 bg-config-bg h-full tablet-lg:w-1/5">
-                {ConfigUI.map((section) => (
-                    <div key={section.id}>
-                        <h5 className="mb-2 text-mono-label text-desc font-mono font-medium">
-                            {section.title}
-                        </h5>
+            <div className="flex flex-col p-4 gap-2 justify-between bg-config-bg h-full tablet-lg:w-1/5 min-h-0">
+                <div className="flex flex-col gap-10 overflow-y-scroll scrollbar-none min-h-0">
+                    {ConfigUI.map((section) => (
+                        <div key={section.id}>
+                            <h5 className="mb-2 text-mono-label text-desc font-mono font-medium">
+                                {section.title}
+                            </h5>
 
-                        <div className="flex flex-col gap-2">
-                            {section.rows.map((row) => (
-                                <ColorRow
-                                    id={row.id}
-                                    key={row.id}
-                                    text={row.label}
-                                    colors={row.colors}
-                                    setConfig={setConfig}
-                                />
-                            ))}
+                            <div className="flex flex-col gap-2">
+                                {section.rows.map((row) => (
+                                    <ColorRow
+                                        id={row.id}
+                                        key={row.id}
+                                        text={row.label}
+                                        colors={row.colors}
+                                        setConfig={setConfig}
+                                    />
+                                ))}
+                            </div>
                         </div>
-                    </div>
-                ))}
-                {/* typography */}
-                <div>
-                    <h5 className="mb-2 text-mono-label text-desc font-mono font-medium">
-                        TYPOGRAPHY & FORMATTING
-                    </h5>
-                    <div className="flex flex-col gap-4">
-                        <FontFamily setConfig={setConfig} />
-                        <FontSizeScaler setConfig={setConfig} />
+                    ))}
+                    {/* typography */}
+                    <div>
+                        <h5 className="mb-2 text-mono-label text-desc font-mono font-medium">
+                            TYPOGRAPHY & FORMATTING
+                        </h5>
+                        <div className="flex flex-col gap-4">
+                            <FontFamily setConfig={setConfig} />
+                            <FontSizeScaler setConfig={setConfig} />
+                        </div>
                     </div>
                 </div>
                 <PrimaryButton
@@ -80,7 +82,7 @@ function VideoConfig() {
                 width={video.width}
                 height={video.height}
                 config={config}
-            /> */}
+                /> */}
         </>
     );
 }
