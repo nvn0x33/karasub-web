@@ -1,6 +1,5 @@
 import { useState, useRef } from "react";
 import { ALargeSmall, Trash, Plus } from "lucide-react";
-import SecondaryButton from "./SecondaryButton";
 
 export default function UploadFont({ setFontList }) {
     const [fontUpload, setFontUpload] = useState<File | null>(null);
@@ -68,10 +67,10 @@ export default function UploadFont({ setFontList }) {
         );
     }
     return (
-        <div className="flex items-center justify-between border-2 border-outline p-2  bg-bg-file">
-            <div className="flex gap-4 items-center">
-                <ALargeSmall className="text-primary" />
-                <span className="text-[0.8rem] overflow-hidden text-desc">
+        <div className="flex items-center justify-between max-w-full border-2 border-outline p-2  bg-bg-file">
+            <div className="flex gap-1 items-center min-w-0">
+                <ALargeSmall className="text-primary shrink-0" />
+                <span className="text-[0.8rem] text-desc truncate">
                     {fontUpload.name}
                 </span>
             </div>
