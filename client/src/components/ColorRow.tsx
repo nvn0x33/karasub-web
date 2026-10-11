@@ -27,7 +27,7 @@ export default function ColorRow({ id, text, colors, setConfig }) {
     }, [configColor, id, setConfig]);
 
     return (
-        <div className="flex flex-col gap-1" id={id}>
+        <div className="flex flex-col gap-1 ms-1" id={id}>
             <h6 className="text-size-desc text-headline">{text}</h6>
             <div className="flex gap-1">
                 {colors.map((color: string) => (
