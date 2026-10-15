@@ -1,34 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Controls = [
     {
         id: "bold",
         text: "B",
         styleCSS: { fontWeight: "bold" },
+        target: "bold",
     },
     {
         id: "italic",
         text: "I",
         styleCSS: { fontStyle: "italic" },
+        target: "italic",
     },
 ];
-export default function EmphasisControl() {
+export default function EmphasisControl({ setConfig }) {
     return (
         <div className="flex gap-1">
             {Controls.map((control) => (
                 <Control
+                    setConfig={setConfig}
                     key={control.id}
                     text={control.text}
+                    target={control.target}
                     styleCSS={control.styleCSS}
                 />
             ))}
-            {/* <Bold />
-            <Italic /> */}
         </div>
     );
 }
 
-function Control({ text, styleCSS }) {
+function Control({ text, styleCSS, setConfig, target }) {
     const [isActive, setIsActive] = useState<boolean>(false);
 
     const handleClick = () => {
@@ -38,6 +40,11 @@ function Control({ text, styleCSS }) {
             setIsActive(true);
         }
     };
+
+    useEffect(() => {
+        setConfig((prev) => ({ ...prev, [target]: isActive }));
+    }, [isActive, target, setConfig]);
+
     return (
         <button
             className={`${
@@ -50,38 +57,3 @@ function Control({ text, styleCSS }) {
         </button>
     );
 }
-
-// function Bold() {
-//     const [isBold, setIsBold] = useState<boolean>(false);
-
-//     const handleClick = () => {
-//         setIsBold(true);
-//     };
-//     return (
-//         <button
-//             className={`${
-//                 isBold === true ? "bg-primary" : ""
-//             }  text-desc font-bold`}
-//             onClick={handleClick}
-//         >
-//             B
-//         </button>
-//     );
-// }
-// function Italic() {
-//     const [isItalic, setIsItalic] = useState<boolean>(false);
-
-//     const handleClick = () => {
-//         setIsItalic(true);
-//     };
-//     return (
-//         <button
-//             className={`${
-//                 isItalic === true ? "bg-primary" : ""
-//             }  text-desc italic`}
-//             onClick={handleClick}
-//         >
-//             I
-//         </button>
-//     );
-// }

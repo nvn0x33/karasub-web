@@ -9,7 +9,7 @@ import FontSizeScaler from "../components/FontSizeScaler";
 import PrimaryButton from "../components/PrimaryButton";
 import EmphasisControl from "../components/EmphasisControl";
 // import FontPreview from "../components/FontPreview";
-// import { useEffect } from "react";
+import { useEffect } from "react";
 
 export default function SubtitleConfig() {
     const { videos } = useContext(VidList);
@@ -35,9 +35,9 @@ function VideoConfig() {
         bold: false,
         italic: false,
     });
-    // useEffect(() => {
-    //     console.log(config);
-    // }, [config]);
+    useEffect(() => {
+        console.log(config);
+    }, [config]);
 
     const uploadConfig = () => {};
     return (
@@ -71,7 +71,7 @@ function VideoConfig() {
                         <div className="flex flex-col gap-4">
                             <FontFamily setConfig={setConfig} />
                             <FontSizeScaler setConfig={setConfig} />
-                            <EmphasisControl />
+                            <EmphasisControl setConfig={setConfig} />
                         </div>
                     </div>
                 </div>
