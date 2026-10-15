@@ -7,6 +7,7 @@ import type { subtitleConfig } from "../types/subtitleConfig";
 import FontFamily from "../components/FontFamily";
 import FontSizeScaler from "../components/FontSizeScaler";
 import PrimaryButton from "../components/PrimaryButton";
+import EmphasisControl from "../components/EmphasisControl";
 // import FontPreview from "../components/FontPreview";
 // import { useEffect } from "react";
 
@@ -68,6 +69,7 @@ function VideoConfig() {
                         <div className="flex flex-col gap-4">
                             <FontFamily setConfig={setConfig} />
                             <FontSizeScaler setConfig={setConfig} />
+                            <EmphasisControl />
                         </div>
                     </div>
                 </div>
