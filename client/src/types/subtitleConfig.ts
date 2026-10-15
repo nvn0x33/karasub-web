@@ -5,4 +5,6 @@ export interface subtitleConfig {
     other_word_outline_color: string;
     font_family: string;
     font_size_scale: string;
+    bold: boolean;
+    italic: boolean;
 }

@@ -32,6 +32,8 @@ function VideoConfig() {
         other_word_outline_color: "",
         font_family: "",
         font_size_scale: "",
+        bold: false,
+        italic: false,
     });
     // useEffect(() => {
     //     console.log(config);
