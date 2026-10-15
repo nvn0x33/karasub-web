@@ -16,16 +16,19 @@ const Controls = [
 ];
 export default function EmphasisControl({ setConfig }) {
     return (
-        <div className="flex gap-1">
-            {Controls.map((control) => (
-                <Control
-                    setConfig={setConfig}
-                    key={control.id}
-                    text={control.text}
-                    target={control.target}
-                    styleCSS={control.styleCSS}
-                />
-            ))}
+        <div className="flex flex-col gap-2">
+            <h6 className="text-size-desc text-headline">Style</h6>
+            <div className="flex gap-1">
+                {Controls.map((control) => (
+                    <Control
+                        setConfig={setConfig}
+                        key={control.id}
+                        text={control.text}
+                        target={control.target}
+                        styleCSS={control.styleCSS}
+                    />
+                ))}
+            </div>
         </div>
     );
 }

@@ -68,7 +68,7 @@ function VideoConfig() {
                         <h5 className="mb-2 text-mono-label text-desc font-mono font-medium">
                             TYPOGRAPHY & FORMATTING
                         </h5>
-                        <div className="flex flex-col gap-4">
+                        <div className="flex flex-col gap-6 ">
                             <FontFamily setConfig={setConfig} />
                             <FontSizeScaler setConfig={setConfig} />
                             <EmphasisControl setConfig={setConfig} />
