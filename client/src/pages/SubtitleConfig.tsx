@@ -11,6 +11,7 @@ import EmphasisControl from "../components/EmphasisControl";
 // import FontPreview from "../components/FontPreview";
 import { useEffect } from "react";
 import TextCase from "../components/TextCase";
+import Toggle from "../components/Toggle";
 
 export default function SubtitleConfig() {
     const { videos } = useContext(VidList);
@@ -31,8 +32,8 @@ function VideoConfig() {
         other_word_color: "",
         outline_color: "",
         shadow_color: "",
-        outline_enabled: true,
-        shadow_enabled: true,
+        outline_enabled: false,
+        shadow_enabled: false,
         font_family: "",
         font_size_scale: "",
         bold: false,
@@ -62,11 +63,33 @@ function VideoConfig() {
                                         text={row.label}
                                         colors={row.colors}
                                         setConfig={setConfig}
+                                        config={config}
                                     />
                                 ))}
                             </div>
                         </div>
                     ))}
+                    {/* Put this into separate component */}
+                    <div className="flex gap-6">
+                        <div className="flex gap-2">
+                            <h6 className="text-size-desc text-headline">
+                                Outline
+                            </h6>
+                            <Toggle
+                                setConfig={setConfig}
+                                target="outline_enabled"
+                            />
+                        </div>
+                        <div className="flex gap-2">
+                            <h6 className="text-size-desc text-headline">
+                                Shadow
+                            </h6>
+                            <Toggle
+                                setConfig={setConfig}
+                                target="shadow_enabled"
+                            />
+                        </div>
+                    </div>
                     {/* typography */}
                     <div>
                         <h5 className="mb-2 text-mono-label text-desc font-mono font-medium">
