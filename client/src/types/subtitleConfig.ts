@@ -7,4 +7,5 @@ export interface subtitleConfig {
     font_size_scale: string;
     bold: boolean;
     italic: boolean;
+    textcase: "default";
 }

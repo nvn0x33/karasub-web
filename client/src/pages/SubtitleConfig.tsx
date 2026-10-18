@@ -35,6 +35,7 @@ function VideoConfig() {
         font_size_scale: "",
         bold: false,
         italic: false,
+        textcase: "default",
     });
     useEffect(() => {
         console.log(config);
@@ -74,7 +75,7 @@ function VideoConfig() {
                             <FontSizeScaler setConfig={setConfig} />
                             <div className="flex gap-2 min-w-0">
                                 <EmphasisControl setConfig={setConfig} />
-                                <TextCase />
+                                <TextCase setConfig={setConfig} />
                             </div>
                         </div>
                     </div>
