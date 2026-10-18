@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 const keyMap: colorConfigMap = {
     "highlight-text": "highlighted_word_color",
-    "highlight-outline": "highlighted_word_outline_color",
+    outline: "outline-color",
     "other-text": "other_word_color",
     "other-outline": "other_word_outline_color",
 };

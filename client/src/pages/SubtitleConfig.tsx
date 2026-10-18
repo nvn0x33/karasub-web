@@ -28,9 +28,11 @@ export default function SubtitleConfig() {
 function VideoConfig() {
     const [config, setConfig] = useState<subtitleConfig>({
         highlighted_word_color: "",
-        highlighted_word_outline_color: "",
         other_word_color: "",
-        other_word_outline_color: "",
+        outline_color: "",
+        shadow_color: "",
+        outline_enabled: true,
+        shadow_enabled: true,
         font_family: "",
         font_size_scale: "",
         bold: false,

@@ -10,11 +10,6 @@ export const ConfigUI: ConfigUItype[] = [
                 label: "Text Color",
                 colors: ["#ffff00", "#87ceeb", "#000000"],
             },
-            {
-                id: "highlight-outline",
-                label: "Outline Color",
-                colors: ["#000000", "#808080", "#ffffff"],
-            },
         ],
     },
     {
@@ -26,9 +21,20 @@ export const ConfigUI: ConfigUItype[] = [
                 label: "Text Color",
                 colors: ["#ffffff", "#808080", "#000000"],
             },
+        ],
+    },
+    {
+        id: "shared-effects",
+        title: "SHARED EFFECTS",
+        rows: [
             {
-                id: "other-outline",
-                label: "Outline Color",
+                id: "outline",
+                label: "Outline",
+                colors: ["#ffffff", "#808080", "#000000"],
+            },
+            {
+                id: "shadow",
+                label: "Shadow",
                 colors: ["#000000", "#808080", "#ffffff"],
             },
         ],
