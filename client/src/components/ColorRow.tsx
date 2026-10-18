@@ -6,10 +6,10 @@ import ColorInputButton from "./ColorInputButton";
 import { useEffect, useState } from "react";
 
 const keyMap: colorConfigMap = {
-    "highlight-text": "highlighted_word_color",
-    outline: "outline-color",
-    "other-text": "other_word_color",
-    "other-outline": "other_word_outline_color",
+    "highlight-text-color": "highlighted_word_color",
+    "outline-color": "outline_color",
+    "other-text-color": "other_word_color",
+    "shadow-color": "shadow_color",
 };
 
 export default function ColorRow({ id, text, colors, setConfig }) {

@@ -6,7 +6,7 @@ export const ConfigUI: ConfigUItype[] = [
         title: "HIGHLIGHTED WORDS",
         rows: [
             {
-                id: "highlight-text",
+                id: "highlight-text-color",
                 label: "Text Color",
                 colors: ["#ffff00", "#87ceeb", "#000000"],
             },
@@ -17,7 +17,7 @@ export const ConfigUI: ConfigUItype[] = [
         title: "OTHER WORDS",
         rows: [
             {
-                id: "other-text",
+                id: "other-text-color",
                 label: "Text Color",
                 colors: ["#ffffff", "#808080", "#000000"],
             },
@@ -28,13 +28,13 @@ export const ConfigUI: ConfigUItype[] = [
         title: "SHARED EFFECTS",
         rows: [
             {
-                id: "outline",
-                label: "Outline",
+                id: "outline-color",
+                label: "Outline Color",
                 colors: ["#ffffff", "#808080", "#000000"],
             },
             {
-                id: "shadow",
-                label: "Shadow",
+                id: "shadow-color",
+                label: "Shadow Color",
                 colors: ["#000000", "#808080", "#ffffff"],
             },
         ],

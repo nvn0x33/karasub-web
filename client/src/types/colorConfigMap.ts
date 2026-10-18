@@ -1,6 +1,6 @@
 export interface colorConfigMap {
-    "highlight-text": string;
-    "highlight-outline": string;
-    "other-text": string;
-    "other-outline": string;
+    "highlight-text-color": string;
+    "outline-color": string;
+    "other-text-color": string;
+    "shadow-color": string;
 }
