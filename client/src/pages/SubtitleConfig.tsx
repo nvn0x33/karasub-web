@@ -10,6 +10,7 @@ import PrimaryButton from "../components/PrimaryButton";
 import EmphasisControl from "../components/EmphasisControl";
 // import FontPreview from "../components/FontPreview";
 import { useEffect } from "react";
+import TextCase from "../components/TextCase";
 
 export default function SubtitleConfig() {
     const { videos } = useContext(VidList);
@@ -71,7 +72,10 @@ function VideoConfig() {
                         <div className="flex flex-col gap-6 ">
                             <FontFamily setConfig={setConfig} />
                             <FontSizeScaler setConfig={setConfig} />
-                            <EmphasisControl setConfig={setConfig} />
+                            <div className="flex gap-2 justify-between">
+                                <EmphasisControl setConfig={setConfig} />
+                                <TextCase />
+                            </div>
                         </div>
                     </div>
                 </div>
