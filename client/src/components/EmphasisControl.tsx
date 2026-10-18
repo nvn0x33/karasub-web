@@ -16,7 +16,7 @@ const Controls = [
 ];
 export default function EmphasisControl({ setConfig }) {
     return (
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 flex-1">
             <h6 className="text-size-desc text-headline">Style</h6>
             <div className="flex gap-1">
                 {Controls.map((control) => (
@@ -52,7 +52,7 @@ function Control({ text, styleCSS, setConfig, target }) {
         <button
             className={`${
                 isActive === true ? "bg-primary" : ""
-            }  text-headline px-6 py-1 rounded-xs outline outline-outline`}
+            }  text-headline py-1 rounded-xs outline outline-outline flex-1 min-w-0`}
             style={styleCSS}
             onClick={handleClick}
         >

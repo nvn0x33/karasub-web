@@ -72,7 +72,7 @@ function VideoConfig() {
                         <div className="flex flex-col gap-6 ">
                             <FontFamily setConfig={setConfig} />
                             <FontSizeScaler setConfig={setConfig} />
-                            <div className="flex gap-2">
+                            <div className="flex gap-2 min-w-0">
                                 <EmphasisControl setConfig={setConfig} />
                                 <TextCase />
                             </div>

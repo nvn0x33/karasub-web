@@ -15,7 +15,7 @@ const TEXT_CASES = [
 
 export default function TextCase() {
     return (
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 flex-1 min-w-0">
             <h6 className="text-size-desc text-headline">
                 <label htmlFor="text-case">Text Case</label>
             </h6>
