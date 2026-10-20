@@ -1,6 +1,34 @@
 import { useState, useEffect } from "react";
 
-export default function Toggle({ setConfig, target }) {
+const TEXT_EFFECTS = [
+    {
+        id: 1,
+        name: "Outline",
+        target: "outline_enabled",
+    },
+    {
+        id: 2,
+        name: "Shadow",
+        target: "shadow_enabled",
+    },
+];
+
+export default function ToggleTextEffects({ setConfig }) {
+    return (
+        <div className="flex gap-6">
+            {TEXT_EFFECTS.map((effect) => (
+                <div className="flex gap-2">
+                    <h6 className="text-size-desc text-headline">
+                        {effect.name}
+                    </h6>
+                    <Toggle setConfig={setConfig} target={effect.target} />
+                </div>
+            ))}
+        </div>
+    );
+}
+
+function Toggle({ setConfig, target }) {
     const [isCheck, setIsCheck] = useState<boolean>(false);
     const handleChange = (e) => {
         setIsCheck(e.target.checked);

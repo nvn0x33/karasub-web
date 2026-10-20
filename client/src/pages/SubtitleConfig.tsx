@@ -11,7 +11,7 @@ import EmphasisControl from "../components/EmphasisControl";
 // import FontPreview from "../components/FontPreview";
 import { useEffect } from "react";
 import TextCase from "../components/TextCase";
-import Toggle from "../components/Toggle";
+import ToggleTextEffects from "../components/ToggleTextEffects";
 
 export default function SubtitleConfig() {
     const { videos } = useContext(VidList);
@@ -70,26 +70,7 @@ function VideoConfig() {
                         </div>
                     ))}
                     {/* Put this into separate component */}
-                    <div className="flex gap-6">
-                        <div className="flex gap-2">
-                            <h6 className="text-size-desc text-headline">
-                                Outline
-                            </h6>
-                            <Toggle
-                                setConfig={setConfig}
-                                target="outline_enabled"
-                            />
-                        </div>
-                        <div className="flex gap-2">
-                            <h6 className="text-size-desc text-headline">
-                                Shadow
-                            </h6>
-                            <Toggle
-                                setConfig={setConfig}
-                                target="shadow_enabled"
-                            />
-                        </div>
-                    </div>
+                    <ToggleTextEffects setConfig={setConfig} />
                     {/* typography */}
                     <div>
                         <h5 className="mb-2 text-mono-label text-desc font-mono font-medium">
