@@ -80,7 +80,10 @@ function VideoConfig() {
                             <FontFamily setConfig={setConfig} />
                             <FontSizeScaler setConfig={setConfig} />
                             <div className="flex gap-2 min-w-0">
-                                <EmphasisControl setConfig={setConfig} />
+                                <EmphasisControl
+                                    config={config}
+                                    setConfig={setConfig}
+                                />
                                 <TextCase setConfig={setConfig} />
                             </div>
                         </div>
