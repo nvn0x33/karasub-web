@@ -32,6 +32,9 @@ export default function SubtitlePos({ align, setConfig }) {
 
 function AlignButton({ textValue, value, setConfig, align }) {
     const handleClick = () => {
+        if (align === textValue) {
+            return;
+        }
         setConfig((prev) => ({ ...prev, alignment: textValue }));
     };
     return (
