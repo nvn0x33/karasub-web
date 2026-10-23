@@ -39,6 +39,7 @@ function VideoConfig() {
         bold: false,
         italic: false,
         textcase: "default",
+        alignment: "bottom-center",
     });
     useEffect(() => {
         console.log(config);
