@@ -69,7 +69,6 @@ function VideoConfig() {
                             </div>
                         </div>
                     ))}
-                    {/* Put this into separate component */}
                     <ToggleTextEffects setConfig={setConfig} />
                     {/* typography */}
                     <div>

@@ -17,7 +17,7 @@ export default function ToggleTextEffects({ setConfig }) {
     return (
         <div className="flex gap-6">
             {TEXT_EFFECTS.map((effect) => (
-                <div className="flex gap-2">
+                <div className="flex gap-2" key={effect.id}>
                     <h6 className="text-size-desc text-headline">
                         {effect.name}
                     </h6>
