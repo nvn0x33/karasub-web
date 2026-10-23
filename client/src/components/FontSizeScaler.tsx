@@ -1,19 +1,16 @@
-import { useState, useEffect } from "react";
 import type { subtitleConfig } from "../types/subtitleConfig";
 
 // font = min(width, height) * 0.06 * Scale;
 const MAX: number = 5.0;
 const MIN: number = 0.1;
 
-export default function FontSizeScaler({ setConfig }) {
-    const [value, setValue] = useState<number>(1.0);
-
-    useEffect(() => {
+export default function FontSizeScaler({ config, setConfig }) {
+    const handleChange = (e) => {
         setConfig((prev: subtitleConfig) => ({
             ...prev,
-            font_size_scale: value,
+            font_size_scale: Number(e.target.value),
         }));
-    }, [value, setConfig]);
+    };
 
     return (
         <div className="flex flex-col gap-1">
@@ -22,7 +19,7 @@ export default function FontSizeScaler({ setConfig }) {
                     Font Size Scale
                 </h6>
                 <span className="text-primary text-size-desc text-right">
-                    {value}x
+                    {config.font_size_scale}x
                 </span>
             </div>
             <div className="flex flex-col">
@@ -31,10 +28,8 @@ export default function FontSizeScaler({ setConfig }) {
                     min={MIN}
                     max={MAX}
                     step={0.1}
-                    value={value}
-                    onChange={(e) => {
-                        setValue(Number(e.currentTarget.value));
-                    }}
+                    value={config.font_size_scale}
+                    onChange={handleChange}
                 />
             </div>
         </div>

@@ -35,7 +35,7 @@ function VideoConfig() {
         outline_enabled: false,
         shadow_enabled: false,
         font_family: "",
-        font_size_scale: "",
+        font_size_scale: 1.0,
         bold: false,
         italic: false,
         textcase: "default",
@@ -78,7 +78,10 @@ function VideoConfig() {
                         </h5>
                         <div className="flex flex-col gap-6 ">
                             <FontFamily setConfig={setConfig} />
-                            <FontSizeScaler setConfig={setConfig} />
+                            <FontSizeScaler
+                                config={config}
+                                setConfig={setConfig}
+                            />
                             <div className="flex gap-2 min-w-0">
                                 <EmphasisControl
                                     config={config}

@@ -6,7 +6,7 @@ export interface subtitleConfig {
     outline_enabled: boolean;
     shadow_enabled: boolean;
     font_family: string;
-    font_size_scale: string;
+    font_size_scale: number;
     bold: boolean;
     italic: boolean;
     textcase: string;

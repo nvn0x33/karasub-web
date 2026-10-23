@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-
 const TEXT_EFFECTS = [
     {
         id: 1,
@@ -14,6 +12,9 @@ const TEXT_EFFECTS = [
 ];
 
 export default function ToggleTextEffects({ setConfig }) {
+    const handleChange = (e, target: string) => {
+        setConfig((prev) => ({ ...prev, [target]: e.target.checked }));
+    };
     return (
         <div className="flex gap-6">
             {TEXT_EFFECTS.map((effect) => (
@@ -21,31 +22,20 @@ export default function ToggleTextEffects({ setConfig }) {
                     <h6 className="text-size-desc text-headline">
                         {effect.name}
                     </h6>
-                    <Toggle setConfig={setConfig} target={effect.target} />
+                    <label
+                        className="relative inline-block w-10 h-6 bg-primary/40 rounded-full cursor-pointer transition-colors duration-300 has-checked:bg-primary
+  after:absolute after:top-1 after:left-1 after:h-4 after:w-4 after:bg-white after:rounded-full after:transition-transform after:duration-300 has-checked:after:translate-x-4"
+                    >
+                        <input
+                            type="checkbox"
+                            className="sr-only"
+                            onChange={(e) => {
+                                handleChange(e, effect.target);
+                            }}
+                        />
+                    </label>
                 </div>
             ))}
         </div>
-    );
-}
-
-function Toggle({ setConfig, target }) {
-    const [isCheck, setIsCheck] = useState<boolean>(false);
-    const handleChange = (e) => {
-        setIsCheck(e.target.checked);
-    };
-    useEffect(() => {
-        setConfig((prev) => ({ ...prev, [target]: isCheck }));
-    }, [setConfig, isCheck, target]);
-    return (
-        <label
-            className="relative inline-block w-10 h-6 bg-primary/40 rounded-full cursor-pointer transition-colors duration-300 has-checked:bg-primary
-  after:absolute after:top-1 after:left-1 after:h-4 after:w-4 after:bg-white after:rounded-full after:transition-transform after:duration-300 has-checked:after:translate-x-4"
-        >
-            <input
-                type="checkbox"
-                className="sr-only"
-                onChange={handleChange}
-            />
-        </label>
     );
 }
