@@ -17,7 +17,7 @@ const subPositions = [
 
 export default function SubtitlePos({ align, setConfig }) {
     return (
-        <div>
+        <div className="p-2 bg-bg gap-2 grid grid-cols-3 grid-rows-3 outline-2 outline-outline w-fit">
             {subPositions.map((pos) => (
                 <AlignButton
                     textValue={pos.textValue}
@@ -39,12 +39,14 @@ function AlignButton({ textValue, value, setConfig, align }) {
     };
     return (
         <button
-            className={`${align === textValue ? "bg-primary" : ""}`}
+            className={`${
+                align === textValue ? "bg-primary" : "bg-bg/20"
+            } p-3 outline outline-outline rounded`}
             aria-label={textValue}
             key={textValue + value}
             onClick={handleClick}
         >
-            <span></span>
+            <span className=" block p-1 rounded  bg-[#002b75]"></span>
         </button>
     );
 }

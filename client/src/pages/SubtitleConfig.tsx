@@ -12,6 +12,7 @@ import EmphasisControl from "../components/EmphasisControl";
 import { useEffect } from "react";
 import TextCase from "../components/TextCase";
 import ToggleTextEffects from "../components/ToggleTextEffects";
+import SubtitlePos from "../components/SubtitlePos";
 
 export default function SubtitleConfig() {
     const { videos } = useContext(VidList);
@@ -90,6 +91,10 @@ function VideoConfig() {
                                 />
                                 <TextCase setConfig={setConfig} />
                             </div>
+                            <SubtitlePos
+                                align={config.alignment}
+                                setConfig={setConfig}
+                            />
                         </div>
                     </div>
                 </div>
