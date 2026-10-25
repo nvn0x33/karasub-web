@@ -5,5 +5,6 @@ export interface ConfigUItype {
         id: string;
         label: string;
         colors: string[];
+        target: string;
     }[];
 }

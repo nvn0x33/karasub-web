@@ -1,30 +1,28 @@
-import type { colorConfigMap } from "../types/colorConfigMap";
+// refactor this component and its children
+
 import type { subtitleConfig } from "../types/subtitleConfig";
 import ColorButton from "./ColorButton";
 import ColorInputButton from "./ColorInputButton";
 
 import { useEffect, useState } from "react";
 
-const keyMap: colorConfigMap = {
-    "highlight-text-color": "highlighted_word_color",
-    "outline-color": "outline_color",
-    "other-text-color": "other_word_color",
-    "shadow-color": "shadow_color",
-};
-
-export default function ColorRow({ id, text, colors, setConfig, config }) {
+export default function ColorRow({
+    id,
+    text,
+    colors,
+    setConfig,
+    config,
+    target,
+}) {
     const [selectedColorID, setSelectedColorID] = useState<string | null>(null);
     const [configColor, setConfigColor] = useState<string>("");
 
     useEffect(() => {
-        if (keyMap[id]) {
-            const target: string = keyMap[id];
-            setConfig((prev: subtitleConfig) => ({
-                ...prev,
-                [target]: configColor,
-            }));
-        }
-    }, [configColor, id, setConfig]);
+        setConfig((prev: subtitleConfig) => ({
+            ...prev,
+            [target]: configColor,
+        }));
+    }, [configColor, setConfig, target]);
 
     const handleSharedEffect = () => {
         if (id === "outline-color" && !config.outline_enabled) return true;

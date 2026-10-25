@@ -34,7 +34,7 @@ function VideoConfig() {
         shadow_color: "",
         outline_enabled: false,
         shadow_enabled: false,
-        font_family: "",
+        font_family: "roboto-mono",
         font_size_scale: 1.0,
         bold: false,
         italic: false,
@@ -65,6 +65,7 @@ function VideoConfig() {
                                         colors={row.colors}
                                         setConfig={setConfig}
                                         config={config}
+                                        target={row.target}
                                     />
                                 ))}
                             </div>
