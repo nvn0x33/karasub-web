@@ -4,6 +4,12 @@ import { drawText } from "canvas-txt";
 import Preview from "../assets/preview-image.webp";
 import type { subtitleConfig } from "../types/subtitleConfig";
 
+function formatText(text: string, casing: string) {
+    if (casing === "uppercase") text = text.toUpperCase();
+    else if (casing === "lowercase") text = text.toLowerCase();
+    return text;
+}
+
 export default function FontPreview({
     width,
     height,
@@ -13,14 +19,16 @@ export default function FontPreview({
     height: number;
     config: subtitleConfig;
 }) {
+    const ctxRef = useRef(null);
+
     const fontScale: number =
         Math.min(width, height) * 0.06 * config.font_size_scale;
     const strokeWidth: number = 0.02 * fontScale;
+
     const [vAlign, hAlign] = config.alignment.split("-") as [
         "top" | "middle" | "bottom",
         "left" | "center" | "right"
     ];
-    const ctxRef = useRef(null);
 
     useEffect(() => {
         const ctx = ctxRef.current.getContext("2d");
@@ -36,6 +44,7 @@ export default function FontPreview({
             vAlign: vAlign,
             align: hAlign,
             fontSize: fontScale,
+            font: "Inter",
             fontWeight: config.bold ? "bold" : "",
             fontStyle: config.italic ? "italic" : "",
             style: {
@@ -45,9 +54,11 @@ export default function FontPreview({
             },
         } as const;
 
-        let text: string = "The quick brown fox jumps over the lazy dog.";
-        if (config.textcase === "uppercase") text = text.toUpperCase();
-        else if (config.textcase === "lowercase") text = text.toLowerCase();
+        // let text: string = "The quick brown fox jumps over the lazy dog.";
+        const text: string = formatText(
+            "The quick brown fox jumps over the lazy dog.",
+            config.textcase
+        );
 
         img.onload = () => {
             ctx.drawImage(img, 0, 0, width, height);
