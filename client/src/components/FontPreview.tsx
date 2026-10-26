@@ -2,8 +2,17 @@
 import { useEffect, useRef } from "react";
 import { drawText } from "canvas-txt";
 import Preview from "../assets/preview-image.webp";
+import type { subtitleConfig } from "../types/subtitleConfig";
 
-export default function FontPreview({ width, height, config }) {
+export default function FontPreview({
+    width,
+    height,
+    config,
+}: {
+    width: number;
+    height: number;
+    config: subtitleConfig;
+}) {
     const fontScale = Math.min(width, height) * 0.06 * config.font_size_scale;
     const ctxRef = useRef(null);
 

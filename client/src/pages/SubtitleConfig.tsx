@@ -8,7 +8,7 @@ import FontFamily from "../components/FontFamily";
 import FontSizeScaler from "../components/FontSizeScaler";
 import PrimaryButton from "../components/PrimaryButton";
 import EmphasisControl from "../components/EmphasisControl";
-// import FontPreview from "../components/FontPreview";
+import FontPreview from "../components/FontPreview";
 import { useEffect } from "react";
 import TextCase from "../components/TextCase";
 import ToggleTextEffects from "../components/ToggleTextEffects";
@@ -105,11 +105,7 @@ function VideoConfig() {
                 />
             </div>
             <div></div>
-            {/* <FontPreview
-                width={video.width}
-                height={video.height}
-                config={config}
-                /> */}
+            <FontPreview width={1200} height={720} config={config} />
         </>
     );
 }
