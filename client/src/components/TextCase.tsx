@@ -15,7 +15,7 @@ const TEXT_CASES = [
 
 export default function TextCase({ setConfig }) {
     const handleChange = (e) => {
-        setConfig((prev) => ({ ...prev, textcase: e.value }));
+        setConfig((prev) => ({ ...prev, textcase: e.target.value }));
     };
     return (
         <div className="flex flex-col gap-2 flex-1 min-w-0">

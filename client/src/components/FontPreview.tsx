@@ -45,7 +45,9 @@ export default function FontPreview({
             },
         } as const;
 
-        const text: string = "The quick brown fox jumps over the lazy dog.";
+        let text: string = "The quick brown fox jumps over the lazy dog.";
+        if (config.textcase === "uppercase") text = text.toUpperCase();
+        else if (config.textcase === "lowercase") text = text.toLowerCase();
 
         img.onload = () => {
             ctx.drawImage(img, 0, 0, width, height);
