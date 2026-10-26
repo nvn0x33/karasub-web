@@ -49,7 +49,7 @@ function VideoConfig() {
     const uploadConfig = () => {};
     return (
         <>
-            <div className="flex flex-col p-4 gap-2 justify-between bg-config-bg h-full tablet-lg:w-1/5 min-h-0">
+            <div className="flex flex-col shrink-0 p-4 gap-2 justify-between bg-config-bg h-full tablet-lg:w-1/5 min-h-0">
                 <div className="flex flex-col gap-8 overflow-y-scroll scrollbar-none min-h-0 p-1">
                     {ConfigUI.map((section) => (
                         <div key={section.id}>
@@ -104,8 +104,7 @@ function VideoConfig() {
                     style={{ paddingInline: 0 }}
                 />
             </div>
-            <div></div>
-            <FontPreview width={1200} height={720} config={config} />
+            <FontPreview width={1280} height={720} config={config} />
         </>
     );
 }
