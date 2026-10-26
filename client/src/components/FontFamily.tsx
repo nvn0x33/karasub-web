@@ -7,14 +7,23 @@ import UploadFont from "./UploadFont";
 const SUPPORTED_FONTS = [
     {
         displayName: "Roboto Mono",
-        value: "roboto-mono",
+        value: "Roboto Mono",
     },
     {
         displayName: "Inter",
-        value: "inter",
+        value: "Inter",
     },
 ];
-
+// const SUPPORTED_FONTS = [
+//     {
+//         displayName: "Roboto Mono",
+//         value: "roboto-mono",
+//     },
+//     {
+//         displayName: "Inter",
+//         value: "inter",
+//     },
+// ];
 export default function FontFamily({ setConfig }) {
     const [fontList, setFontList] = useState(SUPPORTED_FONTS);
     // useEffect(() => {
@@ -24,7 +33,7 @@ export default function FontFamily({ setConfig }) {
     const handleChange = (e) => {
         setConfig((prev: subtitleConfig) => ({
             ...prev,
-            "font-family": e.value,
+            font_family: e.target.value,
         }));
     };
 

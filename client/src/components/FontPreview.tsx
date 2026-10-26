@@ -44,13 +44,13 @@ export default function FontPreview({
             vAlign: vAlign,
             align: hAlign,
             fontSize: fontScale,
-            font: "Inter",
+            fontFamily: config.font_family,
             fontWeight: config.bold ? "bold" : "",
             fontStyle: config.italic ? "italic" : "",
             style: {
                 fill: config.other_word_color || "black",
                 strokeWidth: config.outline_enabled ? strokeWidth : 0,
-                // stroke: config.outline_enabled ? config.outline_color : "",
+                stroke: config.outline_enabled ? config.outline_color : "",
             },
         } as const;
 

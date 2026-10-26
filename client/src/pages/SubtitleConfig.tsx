@@ -35,7 +35,7 @@ function VideoConfig() {
         shadow_color: "",
         outline_enabled: false,
         shadow_enabled: false,
-        font_family: "roboto-mono",
+        font_family: "Roboto Mono",
         font_size_scale: 1.0,
         bold: false,
         italic: false,
