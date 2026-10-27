@@ -17,15 +17,18 @@ const subPositions = [
 
 export default function SubtitlePos({ align, setConfig }) {
     return (
-        <div className="p-2 bg-bg gap-2 grid grid-cols-3 grid-rows-3 outline-2 outline-outline w-fit">
-            {subPositions.map((pos) => (
-                <AlignButton
-                    textValue={pos.textValue}
-                    value={pos.value}
-                    setConfig={setConfig}
-                    align={align}
-                />
-            ))}
+        <div className="flex flex-col gap-2">
+            <h6 className="text-size-desc text-headline">Alignment</h6>
+            <div className="p-2 bg-bg gap-2 grid grid-cols-3 grid-rows-3 outline-2 outline-outline w-fit">
+                {subPositions.map((pos) => (
+                    <AlignButton
+                        textValue={pos.textValue}
+                        value={pos.value}
+                        setConfig={setConfig}
+                        align={align}
+                    />
+                ))}
+            </div>
         </div>
     );
 }
