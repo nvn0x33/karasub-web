@@ -43,11 +43,11 @@ function VideoConfig() {
         alignment: "bottom-center",
     });
     const [fontUpload, setFontUpload] = useState<File | null>(null);
+
     useEffect(() => {
         console.log(config);
     }, [config]);
 
-    const uploadConfig = () => {};
     return (
         <>
             <div className="flex flex-col shrink-0 p-4 gap-2 justify-between bg-config-bg h-full tablet-lg:w-1/5 min-h-0">
@@ -103,11 +103,32 @@ function VideoConfig() {
                 </div>
                 <PrimaryButton
                     text="GENERATE VIDEO"
-                    handleClick={uploadConfig}
+                    handleClick={() => {
+                        Upload(config, fontUpload, video.vidFile, video.id);
+                    }}
                     style={{ paddingInline: 0 }}
                 />
             </div>
             <FontPreview width={1280} height={720} config={config} />
         </>
     );
+}
+
+async function Upload(config, fontFile, videoFile, id) {
+    const API: string = "";
+    const formData = new FormData();
+    formData.append("Configuration", config);
+    formData.append("Video File", videoFile);
+    formData.append("Font File", fontFile);
+
+    try {
+        const response = await fetch(API, {
+            method: "POST",
+            body: formData,
+        });
+        const data = await response.json();
+        console.log("Upload Successful:", data);
+    } catch (err) {
+        throw new Error("Upload Failed:", err);
+    }
 }
