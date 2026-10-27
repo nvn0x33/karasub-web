@@ -1,7 +1,7 @@
 import ColorRow from "../components/ColorRow";
 import { useContext, useState } from "react";
 import { ConfigUI } from "../skeletons/ConfigUI";
-import { VidList } from "../contexts";
+import { VidList, FontFile } from "../contexts";
 import type { subtitleConfig } from "../types/subtitleConfig";
 
 import FontFamily from "../components/FontFamily";
@@ -42,6 +42,7 @@ function VideoConfig() {
         textcase: "default",
         alignment: "bottom-center",
     });
+    const [fontUpload, setFontUpload] = useState<File | null>(null);
     useEffect(() => {
         console.log(config);
     }, [config]);
@@ -79,7 +80,9 @@ function VideoConfig() {
                             TYPOGRAPHY & FORMATTING
                         </h5>
                         <div className="flex flex-col gap-6 ">
-                            <FontFamily setConfig={setConfig} />
+                            <FontFile value={[fontUpload, setFontUpload]}>
+                                <FontFamily setConfig={setConfig} />
+                            </FontFile>
                             <FontSizeScaler
                                 config={config}
                                 setConfig={setConfig}

@@ -1,8 +1,10 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import { ALargeSmall, Trash, Plus } from "lucide-react";
+import { useContext } from "react";
+import { FontFile } from "../contexts";
 
 export default function UploadFont({ setFontList }) {
-    const [fontUpload, setFontUpload] = useState<File | null>(null);
+    const [fontUpload, setFontUpload] = useContext(FontFile);
     const fontInput = useRef(null);
 
     const handleFileUpload = (files: FileList) => {
