@@ -114,10 +114,17 @@ function VideoConfig() {
     );
 }
 
-async function Upload(config, fontFile, videoFile, id) {
+async function Upload(
+    config: subtitleConfig,
+    fontFile: File,
+    videoFile: File,
+    id: string
+) {
     const API: string = "";
+    const newConfig = JSON.stringify(config);
     const formData = new FormData();
-    formData.append("Configuration", config);
+
+    formData.append("Configuration", newConfig);
     formData.append("Video File", videoFile);
     formData.append("Font File", fontFile);
 
