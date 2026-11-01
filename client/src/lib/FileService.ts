@@ -7,7 +7,7 @@ export class FileService {
         videoFile: File
         // id: string
     ) {
-        const API: string = "http://127.0.0.1:5000/";
+        const API: string = "/api";
         const newConfig = JSON.stringify(config);
         const formData = new FormData();
 
