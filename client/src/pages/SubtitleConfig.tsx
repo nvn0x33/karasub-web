@@ -21,14 +21,14 @@ export default function SubtitleConfig() {
     return (
         <section className="flex max-tablet-lg:flex-col h-full">
             {videos.map((video) => (
-                <VideoConfig video={video.vidFile} key={video.id} />
+                <VideoConfig vidFile={video.vidFile} key={video.id} />
             ))}
             {/* <VideoConfig /> */}
         </section>
     );
 }
 
-function VideoConfig(vidFile) {
+function VideoConfig({ vidFile }) {
     const [config, setConfig] = useState<subtitleConfig>({
         highlighted_word_color: "",
         other_word_color: "",
@@ -46,8 +46,8 @@ function VideoConfig(vidFile) {
     const [fontUpload, setFontUpload] = useState<File | null>(null);
 
     useEffect(() => {
-        console.log(config);
-    }, [config]);
+        console.log(vidFile);
+    }, [vidFile]);
 
     return (
         <>

@@ -7,10 +7,11 @@ app = Flask(__name__)
 @app.route('/', methods=['POST'])
 def home():
     if request.method == 'POST':
-        if 'file' not in request.files:
-            print("")
+        if 'video_file' not in request.files:
+            app.logger.error("message: video_file not found in request.files")
             return jsonify({"error": "No file part in this request!"})
-        file = request.files['file']
+        
+        file = request.files['video_file']
         filename = secure_filename(file.filename)
         file.save(filename)
         return "success"

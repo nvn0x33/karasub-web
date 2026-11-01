@@ -11,7 +11,7 @@ export class FileService {
         const newConfig = JSON.stringify(config);
         const formData = new FormData();
 
-        formData.append("configuration", newConfig);
+        formData.append("config", newConfig);
         formData.append("video_file", videoFile);
         formData.append("font_file", fontFile);
 
