@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { ConfigUI } from "../skeletons/ConfigUI";
 import { VidList, FontFile } from "../contexts";
 import type { subtitleConfig } from "../types/subtitleConfig";
+import { FileService } from "../lib/FileService";
 
 import FontFamily from "../components/FontFamily";
 import FontSizeScaler from "../components/FontSizeScaler";
@@ -19,15 +20,15 @@ export default function SubtitleConfig() {
 
     return (
         <section className="flex max-tablet-lg:flex-col h-full">
-            {/* {videos.map((video) => (
-                <VideoConfig video={video} key={video.id} />
-            ))} */}
-            <VideoConfig />
+            {videos.map((video) => (
+                <VideoConfig video={video.vidFile} key={video.id} />
+            ))}
+            {/* <VideoConfig /> */}
         </section>
     );
 }
 
-function VideoConfig() {
+function VideoConfig(vidFile) {
     const [config, setConfig] = useState<subtitleConfig>({
         highlighted_word_color: "",
         other_word_color: "",
@@ -104,7 +105,7 @@ function VideoConfig() {
                 <PrimaryButton
                     text="GENERATE VIDEO"
                     handleClick={() => {
-                        Upload(config, fontUpload, video.vidFile, video.id);
+                        FileService.Upload(config, fontUpload, vidFile);
                     }}
                     style={{ paddingInline: 0 }}
                 />
@@ -112,30 +113,4 @@ function VideoConfig() {
             <FontPreview width={1280} height={720} config={config} />
         </>
     );
-}
-
-async function Upload(
-    config: subtitleConfig,
-    fontFile: File,
-    videoFile: File,
-    id: string
-) {
-    const API: string = "";
-    const newConfig = JSON.stringify(config);
-    const formData = new FormData();
-
-    formData.append("Configuration", newConfig);
-    formData.append("Video File", videoFile);
-    formData.append("Font File", fontFile);
-
-    try {
-        const response = await fetch(API, {
-            method: "POST",
-            body: formData,
-        });
-        const data = await response.json();
-        console.log("Upload Successful:", data);
-    } catch (err) {
-        throw new Error("Upload Failed:", err);
-    }
 }
