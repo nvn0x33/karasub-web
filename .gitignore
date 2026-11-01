@@ -28,3 +28,4 @@ dist-ssr
 server/pipeline/input/*
 server/pipeline/output/*
 server/pipeline/temp/*
+server/jobs/*
