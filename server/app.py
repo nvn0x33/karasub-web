@@ -21,18 +21,23 @@ def home():
         
         # Job Id
         ID = str(uuid.uuid4())
-        fonts = [".ttc", ".ttf", ".otf"]
         
-        # Save paths
+        # Save and create paths
         base_path = Path(f"jobs/{ID}/")
         base_path.mkdir(parents=True, exist_ok=True)
         
-        # Saving the Files
-        video.save(Path(base_path, video.filename))
-        Path(base_path, "config.json").write_text(json.dumps(config))
+        # Some extensions
+        new_video_file_name = f"input{Path(video.filename).suffix}"
+        fonts = [".ttc", ".ttf", ".otf"]
         
-        if font_file != None and Path(font_file.filename).suffix in fonts:
-            font_file.save(Path(base_path, font_file.filename))
+        # Saving the Files
+        video.save(base_path / new_video_file_name)
+        (base_path / "config.json").write_text(json.dumps(config))
+        
+        if font_file != None:
+            ext = Path(font_file.filename).suffix
+            if ext in fonts:
+                font_file.save((base_path / f"font{ext}"))
         
         return ID
 
