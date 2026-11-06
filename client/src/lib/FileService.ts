@@ -23,7 +23,7 @@ export class FileService {
             const data = await response.json();
             console.log("Upload Successful:", data);
         } catch (err) {
-            throw new Error("Upload Failed:", err);
+            console.log(err);
         }
     }
 }

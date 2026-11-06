@@ -39,7 +39,7 @@ def home():
             if ext in fonts:
                 font_file.save((base_path / f"font{ext}"))
         
-        return ID
+        return jsonify({"upload_status": "success", "job_id": f"{ID}"})
 
 if __name__ == "__main__":
     app.run(debug=True)
