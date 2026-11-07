@@ -6,7 +6,7 @@ class Transcribe:
     model = None
     
     def __init__(self):
-        Transcribe.model = WhisperModel(Transcribe.model_size, device="cpu", compute_type="int8")
+        Transcribe.model = WhisperModel(Transcribe.model_size, device="cpu", compute_type="int8", download_root="./models/", num_workers=2)
         
 
     def convert(self, audio_path):

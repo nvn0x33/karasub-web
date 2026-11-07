@@ -1,6 +1,8 @@
 from flask import Flask, request, jsonify
 from werkzeug.utils import secure_filename
 from pathlib import Path
+from pipeline import main
+from jobs import append
 import uuid, json
 
 app = Flask(__name__)
@@ -38,8 +40,19 @@ def home():
             ext = Path(font_file.filename).suffix
             if ext in fonts:
                 font_file.save((base_path / f"font{ext}"))
+                
+        append(ID, "queue")
+        main.submit()
         
         return jsonify({"upload_status": "success", "job_id": f"{ID}"})
+
+@app.route('/jobs/<string: job_id>/status', methods=['GET'])
+def job_status():
+    pass
+
+@app.route('/jobs/<string: job_id>/download', methods=['GET'])
+def download_video():
+    pass
 
 if __name__ == "__main__":
     app.run(debug=True)

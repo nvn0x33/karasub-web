@@ -7,9 +7,10 @@ from . import extract, burn_subtitle, get_resolution
 import os, threading
 
 class Handle:
-    default_font = "fonts/RobotoMono-Medium.ttf"
+    mono_font = "fonts/RobotoMono-Medium.ttf"
+    inter_font = "fonts/Inter-Medium.otf"
     
-    input_dir = Path("input")
+    # input_dir = Path("input")
     output_dir = Path("output")
     temp_dir = Path("temp")
     
@@ -19,14 +20,14 @@ class Handle:
     def __init__(self):
         self.create_folders()
         
-    def init_UI(self):
-        new_ui = UI(Handle.default_font, Handle.input_dir)
-        vid_files = new_ui.print_UI()
+    # def init_UI(self):
+    #     new_ui = UI(Handle.default_font, Handle.input_dir)
+    #     vid_files = new_ui.print_UI()
         
-        new_ui.correct_config()
-        Handle.config = new_ui.config
+    #     new_ui.correct_config()
+    #     Handle.config = new_ui.config
         
-        return vid_files
+    #     return vid_files
     
     def parallel_process_vids(self):
         new_transcript = Transcribe()
@@ -82,7 +83,7 @@ class Handle:
                 "transcript": []})
         
     def create_folders(self):
-        Handle.input_dir.mkdir(parents=True, exist_ok=True)
+        # Handle.input_dir.mkdir(parents=True, exist_ok=True)
         Handle.output_dir.mkdir(parents=True, exist_ok=True)
         Handle.temp_dir.mkdir(parents=True, exist_ok=True)
     
