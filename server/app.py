@@ -45,8 +45,7 @@ def home():
             if ext in fonts:
                 font_file.save((base_path / f"font{ext}"))
                 
-        # append(ID, "queue")
-        # main.submit()
+        jobs.append(ID, "queue")
         
         return jsonify({"upload_status": "success", "job_id": f"{ID}"})
 

@@ -9,7 +9,7 @@ def get_jobs(job_no):
     queue_jobs = []
     for key, value in jobs:
         if queue_jobs.length == job_no:
-            break
+            return None
         if value["status"] == "queue":
             queue_jobs.push(key)
             
