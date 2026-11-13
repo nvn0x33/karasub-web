@@ -1,11 +1,15 @@
 from flask import Flask, request, jsonify
 from werkzeug.utils import secure_filename
 from pathlib import Path
-from pipeline import main
-from jobs import append
+from pipeline import main, jobs
+import threading
 import uuid, json
 
 app = Flask(__name__)
+
+threading.Thread(target=main.submit).start()
+
+print("went beyond")
 
 @app.route('/', methods=['POST'])
 def home():
@@ -41,18 +45,18 @@ def home():
             if ext in fonts:
                 font_file.save((base_path / f"font{ext}"))
                 
-        append(ID, "queue")
-        main.submit()
+        # append(ID, "queue")
+        # main.submit()
         
         return jsonify({"upload_status": "success", "job_id": f"{ID}"})
 
-@app.route('/jobs/<string: job_id>/status', methods=['GET'])
-def job_status():
-    pass
+# @app.route('/jobs/<string: job_id>/status', methods=['GET'])
+# def job_status():
+#     pass
 
-@app.route('/jobs/<string: job_id>/download', methods=['GET'])
-def download_video():
-    pass
+# @app.route('/jobs/<string: job_id>/download', methods=['GET'])
+# def download_video():
+#     pass
 
 if __name__ == "__main__":
     app.run(debug=True)
