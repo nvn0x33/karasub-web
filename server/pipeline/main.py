@@ -3,19 +3,22 @@ from .jobs import append, get_jobs
 from pathlib import Path
 import time
 
-jobs_path = Path("../jobs")
+jobs_path = Path("./jobs")
 
 def submit():
+    BATCH_SIZE = 2
     while True:
-        job_array = get_jobs(2)
-        if job_array == None:
+        job_queue = get_jobs(BATCH_SIZE)
+        
+        if job_queue.length < 1:
             continue
         
-        append(job_array[0], "processing")
-        append(job_array[1], "processing")
+        for job_id in job_queue:
+            append(job_id, "processing")
         
-        transcriber = Transcribe()
-        # video_files = utils.get_vid_files(self.input_dir)
+        # transcriber = Transcribe()
+        # modify the utils.get_vid_files to accept an array of path and loop through it to find three things: [vid, config and font_file]
+        video_files = utils.get_vid_files(jobs_path / job)
         
         # new_handle = Handle()
         # vid_files = new_handle.init_UI()

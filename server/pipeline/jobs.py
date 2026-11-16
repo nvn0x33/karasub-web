@@ -1,3 +1,4 @@
+
 jobs = {
     # job_id: {"status": "processing"}
 }
@@ -5,12 +6,13 @@ jobs = {
 def append(job_id, status):
     jobs[job_id] = {"status": status}
     
-def get_jobs(job_no):
-    queue_jobs = []
+def get_jobs(max_jobs):
+    job_queue = []
+    
     for key, value in jobs:
-        if queue_jobs.length == job_no:
-            return None
+        if job_queue.length == max_jobs:
+            break
         if value["status"] == "queue":
-            queue_jobs.push(key)
+            job_queue.append(key)
             
-    return queue_jobs
+    return job_queue
