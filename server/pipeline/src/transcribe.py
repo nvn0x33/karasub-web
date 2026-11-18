@@ -27,6 +27,7 @@ class Transcribe:
             words = []
             
             for raw_word in segment.words:
+                
                 word_data = {
                     "word": raw_word.word.strip(),
                     "start": float(f"{raw_word.start:.2f}"),

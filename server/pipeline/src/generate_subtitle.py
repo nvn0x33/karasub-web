@@ -10,6 +10,7 @@ class ASS:
     def __init__(self, video_data, config):
         self.video_data = video_data
         self.config = config
+        
 
         
     def write_script(self):
@@ -45,8 +46,14 @@ class ASS:
                 # ceptisec is 1/100 of a sec and \k values are only for the duration of "highlight".
                 # Therefore, even if the value of ceptisec exceeds the duration of sentence by +1 value. It will not cause any issue.
                 ceptisec = round(ceptisec)
+                new_word = word["word"]
                 
-                dialogue += f"{{\k{ceptisec}}}{word["word"]} "
+                if self.config["textcase"] == "uppercase":
+                    new_word = new_word.upper()
+                elif self.config["textcase"] == "lowercase":
+                    new_word = new_word.lower()
+                    
+                dialogue += f"{{\k{ceptisec}}}{new_word["word"]} "
             
             dialogue = dialogue.strip() + "\n"
             body += dialogue
