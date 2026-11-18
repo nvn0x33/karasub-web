@@ -26,9 +26,11 @@ def get_vid_files(paths):
     found_files = []
     
     for path in paths:
-        config = json.load(path / "config.json")
+        with open(path / "config.json", "r") as fp:
+            config = json.load(fp)
+            
         vid_file = next(path.glob("input.*"), None)
-        font_file = next(path.glob("font-file.*"), None)
+        font_file = next(path.glob("font.*"), None)
         
         found_files.append({
             "config": config,
