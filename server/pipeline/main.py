@@ -22,10 +22,10 @@ def submit():
         # modify the utils.get_vid_files to accept an array of path and loop through it to find three things: [vid, config and font_file]
         video_files = utils.get_vid_files(job_paths)
         
-        # new_handle = Handle()
+        new_handle = Handle()
         # vid_files = new_handle.init_UI()
         
-        # new_handle.append_font_data(vid_files)
+        new_handle.append_final_data(video_files)
         
         # new_handle.parallel_process_vids()
     

@@ -15,7 +15,6 @@ class Handle:
     temp_dir = Path("temp")
     
     videos_data = []
-    config = {}
     
     def __init__(self):
         self.create_folders()
@@ -66,20 +65,16 @@ class Handle:
         print(f"[red] Video {process_id}: Burning subtitle [/red]")
         burn_subtitle(video["path"], path_to_sub, font_folder, vid_out)
     
-    def append_font_data(self, vid_files):
+    def append_final_data(self, vid_files):
         for video in vid_files:
-            width, height = get_resolution(video["path"])
+            width, height = get_resolution(video["vid_path"])
             
-            if Handle.config["font_size"] == "auto":
-                font = min(width, height) * 0.060
-            else:
-                font = Handle.config["font_size"]
+            video.config["font_size"] = int(min(width, height) * 0.060 * video.config["font_size_scale"])
             
             Handle.videos_data.append(
                 {**video, 
                 "resX": width,
                 "resY": height,
-                "font_size": int(font), 
                 "transcript": []})
         
     def create_folders(self):
