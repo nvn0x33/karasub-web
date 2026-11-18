@@ -66,10 +66,11 @@ class Handle:
         burn_subtitle(video["path"], path_to_sub, font_folder, vid_out)
     
     def append_final_data(self, vid_files):
+        print(vid_files)
         for video in vid_files:
             width, height = get_resolution(video["vid_path"])
             
-            video.config["font_size"] = int(min(width, height) * 0.060 * video.config["font_size_scale"])
+            video["config"]["font_size"] = int(min(width, height) * 0.060 * video["config"]["font_size_scale"])
             
             Handle.videos_data.append(
                 {**video, 
