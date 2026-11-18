@@ -54,7 +54,7 @@ class Handle:
         video["transcript"] = transcript_data
         # Initiate .ass subtitle file
         print(f"[red] Video {process_id}: Creating .ass script [/red]")
-        new_script = ASS(video, Handle.config)
+        new_script = ASS(video, video["config"])
         # Write script and get its path
         path_to_sub = new_script.write_script()
         # Create path 
@@ -66,7 +66,6 @@ class Handle:
         burn_subtitle(video["path"], path_to_sub, font_folder, vid_out)
     
     def append_final_data(self, vid_files):
-        print(vid_files)
         for video in vid_files:
             width, height = get_resolution(video["vid_path"])
             
@@ -78,7 +77,6 @@ class Handle:
                 "resY": height,
                 "transcript": []})
             
-        print(Handle.videos_data)
         
     def create_folders(self):
         # Handle.input_dir.mkdir(parents=True, exist_ok=True)

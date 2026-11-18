@@ -20,7 +20,7 @@ class ASS:
         
         [V4+ Styles]
         Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-        Style: CustomKaraoke,{font_name},{self.video_data["font_size"]},{self.config["primary_color"]},{self.config["secondary_color"]},{self.config["outline_color"]},{self.config["bg_color"]},-1,0,0,0,100,100,0,0,1,2.66667,0,2,7,7,33,1
+        Style: CustomKaraoke,{font_name},{self.config["font_size"]},{self.config["primary_color"]},{self.config["secondary_color"]},{self.config["outline_color"]},{self.config["shadow_color"]},-1,0,0,0,100,100,0,0,1,2.66667,0,2,7,7,33,1
         """
         
         body = textwrap.dedent(f"""\

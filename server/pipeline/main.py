@@ -27,7 +27,7 @@ def submit():
         
         new_handle.append_final_data(video_files)
         
-        # new_handle.parallel_process_vids()
+        new_handle.parallel_process_vids()
         
         time.sleep(5)
     
