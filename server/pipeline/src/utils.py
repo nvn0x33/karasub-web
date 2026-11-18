@@ -1,5 +1,5 @@
 import os, ffmpeg, json
-from pathlib import Path, glob
+from pathlib import Path
 
 def get_resolution(video_path):
     probe = ffmpeg.probe(video_path)

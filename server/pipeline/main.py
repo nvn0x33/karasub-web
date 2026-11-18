@@ -10,7 +10,7 @@ def submit():
     while True:
         job_queue = get_jobs(BATCH_SIZE)
         
-        if job_queue.length < 1:
+        if not job_queue:
             continue
         
         job_paths = []
@@ -28,4 +28,6 @@ def submit():
         new_handle.append_final_data(video_files)
         
         # new_handle.parallel_process_vids()
+        
+        time.sleep(5)
     

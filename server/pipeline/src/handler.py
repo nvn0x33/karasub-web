@@ -76,6 +76,8 @@ class Handle:
                 "resX": width,
                 "resY": height,
                 "transcript": []})
+            
+        print(Handle.videos_data)
         
     def create_folders(self):
         # Handle.input_dir.mkdir(parents=True, exist_ok=True)
