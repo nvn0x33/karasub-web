@@ -1,5 +1,5 @@
-import os, ffmpeg
-from pathlib import Path
+import os, ffmpeg, json
+from pathlib import Path, glob
 
 def get_resolution(video_path):
     probe = ffmpeg.probe(video_path)
@@ -20,15 +20,29 @@ def RGB_to_BGR(hex="#FFGGHH"):
     
     return new_hex
 
-def get_vid_files(target_dir):
-    supported_exts = [".mp4", ".mkv", ".m4v", ".mov"]
+def get_vid_files(paths):
+    # ffmpeg supports almost all the video formats
+    # supported_exts = [".mp4", ".mkv", ".m4v", ".mov"]
     found_files = []
     
-    for item in os.listdir(target_dir):
-        _, ext = os.path.splitext(item)
+    for path in paths:
+        config = json.load(path / "config.json")
+        vid_file = next(path.glob("input.*"), None)
+        font_file = next(path.glob("font-file.*"), None)
+        
+        found_files.append({
+            "config": config,
+            "vid_path": vid_file,
+            "font_path": font_file
+        })
+        
+    
+        
+    # for item in os.listdir(target_dir):
+    #     _, ext = os.path.splitext(item)
 
-        if ext in supported_exts:
-            path = (Path(target_dir) / item).as_posix()
-            found_files.append({"name": item, "path": path})
+    #     if ext in supported_exts:
+    #         path = (Path(target_dir) / item).as_posix()
+    #         found_files.append({"name": item, "path": path})
             
     return found_files
