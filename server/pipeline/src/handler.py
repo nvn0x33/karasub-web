@@ -16,6 +16,18 @@ class Handle:
     
     videos_data = []
     
+    alignment = {
+    "bottom-left": 1,
+    "bottom-center": 2,
+    "bottom-right": 3,
+    "middle-left": 4,
+    "middle-center": 5,
+    "middle-right": 6,
+    "top-left": 7,
+    "top-center": 8,
+    "top-right": 9
+}
+    
     def __init__(self):
         self.create_folders()
         
@@ -71,10 +83,7 @@ class Handle:
             
             video["config"]["font_size"] = int(min(width, height) * 0.060 * video["config"]["font_size_scale"])
             
-            # Modify the color codes to match ass color code
-            for key, value in video["config"].items():
-                if "color" in key:
-                    video["config"][key] = utils.RGB_to_BGR(value)
+            video["config"] = self.adjust_config_values(video["config"])
             
             Handle.videos_data.append(
                 {**video, 
@@ -82,6 +91,24 @@ class Handle:
                 "resY": height,
                 "transcript": []})
             
+            print(Handle.videos_data)
+          
+    def adjust_config_values(self, config):
+        config["bold"] = 0 if config.get("bold") == False else -1
+        config["italic"] = 0 if config.get("italic") == False else -1
+        config["outline_enabled"] = 0 if config.get("outline_enabled") == False else (0.1)*config["font_size"]
+        config["shadow_enabled"] = 0 if config.get("shadow_enabled") == False else (0.1)*config["font_size"]
+        
+        # Modify the color codes to match ass color code
+        for key, value in config.items():
+                if "color" in key:
+                    config[key] = utils.RGB_to_BGR(value)
+                    
+        config["alignment"] = Handle.alignment[config["alignment"]]
+                    
+        return config
+        
+          
         
     def create_folders(self):
         # Handle.input_dir.mkdir(parents=True, exist_ok=True)
