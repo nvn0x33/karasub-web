@@ -1,7 +1,7 @@
 from pathlib import Path
 from rich import print
 
-from . import Transcribe, UI, ASS
+from . import Transcribe, ASS, utils
 from . import extract, burn_subtitle, get_resolution
 
 import os, threading
@@ -70,6 +70,11 @@ class Handle:
             width, height = get_resolution(video["vid_path"])
             
             video["config"]["font_size"] = int(min(width, height) * 0.060 * video["config"]["font_size_scale"])
+            
+            # Modify the color codes to match ass color code
+            for key, value in video["config"].items():
+                if "color" in key:
+                    video["config"][key] = utils.RGB_to_BGR(value)
             
             Handle.videos_data.append(
                 {**video, 
