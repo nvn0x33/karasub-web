@@ -4,8 +4,8 @@ from .utils import rm_extension
 import textwrap
 
 class ASS:
-    mono_font = "fonts/RobotoMono-Medium.ttf"
-    inter_font = "fonts/Inter-Medium.otf"
+    mono_font = "pipeline/fonts/RobotoMono-Medium.ttf"
+    inter_font = "pipeline/fonts/Inter-Medium.otf"
     
     def __init__(self, video_data, config):
         self.video_data = video_data
@@ -25,7 +25,7 @@ class ASS:
         
         [V4+ Styles]
         Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-        Style: CustomKaraoke,{font_name},{self.config["font_size"]},{self.config["primary_color"]},{self.config["secondary_color"]},{self.config["outline_color"]},{self.config["shadow_color"]},{self.config["bold"]},{self.config["italic"]},0,0,100,100,0,0,1,{self.config["outline_enabled"]},{self.config["shadow_enabled"]},{self.config["alignment"]},7,7,33,1
+        Style: CustomKaraoke,{font_name},{self.config["font_size"]},{self.config["highlighted_word_color"]},{self.config["other_word_color"]},{self.config["outline_color"]},{self.config["shadow_color"]},{self.config["bold"]},{self.config["italic"]},0,0,100,100,0,0,1,{self.config["outline_enabled"]},{self.config["shadow_enabled"]},{self.config["alignment"]},7,7,33,1
         """
         
         body = textwrap.dedent(f"""\
@@ -61,7 +61,7 @@ class ASS:
         return self.script_to_ass(body)
             
     def script_to_ass(self, body):
-        path = "temp/" + rm_extension(self.video_data["name"]) + ".ass"
+        path = "pipeline/temp/" + self.video_data["vid_path"].stem + ".ass"
         
         with open(path, "w") as file:
             file.write(body)

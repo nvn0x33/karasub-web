@@ -7,12 +7,12 @@ from . import extract, burn_subtitle, get_resolution
 import os, threading
 
 class Handle:
-    mono_font = "fonts/RobotoMono-Medium.ttf"
-    inter_font = "fonts/Inter-Medium.otf"
+    mono_font = "pipeline/fonts/RobotoMono-Medium.ttf"
+    inter_font = "pipeline/fonts/Inter-Medium.otf"
     
     # input_dir = Path("input")
     output_dir = Path("output")
-    temp_dir = Path("temp")
+    temp_dir = Path("pipeline/temp")
     
     videos_data = []
     

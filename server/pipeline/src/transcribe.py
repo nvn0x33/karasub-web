@@ -10,14 +10,14 @@ class Transcribe:
         
 
     def convert(self, audio_path):
-        print("Transcribe.convert")
+        print("Transcribe.convert, ", audio_path)
         segments, _ = Transcribe.model.transcribe(audio_path, beam_size=5, word_timestamps=True)
     
         segments = list(segments)
         return self.clean_segments(segments)
         
     def clean_segments(self, segments):
-        
+        print(segments)
         if not segments:
             raise ValueError("Error: segments is corrupted or empty.")
         print("Clean segments")
