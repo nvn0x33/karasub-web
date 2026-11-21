@@ -53,7 +53,7 @@ class ASS:
                 elif self.config["textcase"] == "lowercase":
                     new_word = new_word.lower()
                     
-                dialogue += f"{{\k{ceptisec}}}{new_word["word"]} "
+                dialogue += f"{{\k{ceptisec}}}{new_word} "
             
             dialogue = dialogue.strip() + "\n"
             body += dialogue
@@ -78,15 +78,7 @@ class ASS:
         return f"{hours:02d}:{mins:02d}:{secs:.2f}"        
 
     def get_font_name(self):
-        selected_font = self.config["font_family"]
-        font_path = ""
-        
-        if selected_font == "Inter":
-            font_path = ASS.inter_font
-        elif selected_font == "Roboto Mono":
-            font_path = ASS.mono_font
-        elif self.video_data["font_file"] != None:
-            font_path = self.video_data["font_file"]
+        font_path = self.video_data["font_path"]
             
         font = TTFont(font_path)
         name_table = font["name"]

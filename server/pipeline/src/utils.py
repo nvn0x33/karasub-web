@@ -20,22 +20,23 @@ def RGB_to_BGR(hex="#FFGGHH"):
     
     return new_hex
 
-def get_vid_files(paths):
+def get_vid_files(jobs_info):
     # ffmpeg supports almost all the video formats
     # supported_exts = [".mp4", ".mkv", ".m4v", ".mov"]
     found_files = []
     
-    for path in paths:
-        with open(path / "config.json", "r") as fp:
+    for job_info in jobs_info:
+        with open(job_info.path / "config.json", "r") as fp:
             config = json.load(fp)
             
-        vid_file = next(path.glob("input.*"), None)
-        font_file = next(path.glob("font.*"), None)
+        vid_file = next(job_info.path.glob("input.*"), None)
+        font_file = next(job_info.path.glob("font.*"), None)
         
         found_files.append({
             "config": config,
             "vid_path": vid_file,
-            "font_path": font_file
+            "custom_font_path": font_file,
+            "job_id": job_info.id
         })
         
     

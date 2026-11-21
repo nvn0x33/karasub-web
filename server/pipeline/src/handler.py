@@ -30,15 +30,6 @@ class Handle:
     
     def __init__(self):
         self.create_folders()
-        
-    # def init_UI(self):
-    #     new_ui = UI(Handle.default_font, Handle.input_dir)
-    #     vid_files = new_ui.print_UI()
-        
-    #     new_ui.correct_config()
-    #     Handle.config = new_ui.config
-        
-    #     return vid_files
     
     def parallel_process_vids(self):
         new_transcript = Transcribe()
@@ -70,25 +61,35 @@ class Handle:
         # Write script and get its path
         path_to_sub = new_script.write_script()
         # Create path 
-        font_folder = os.path.dirname(Handle.config["font_style"])
-        vid_out = (Path(Handle.output_dir) / video["name"]).as_posix()
+        ## FIX THESE TWO LINES, GIVE CORRECT FONT FOLDER PATH AND CORRECT VIDEO OUTPUT PATH.
+        font_folder = os.path.dirname(video["font_path"])
+        vid_out = (Handle.output_dir / video["job_id"] / "output.mp4")
 
         # Final output with subtitle + video.
         print(f"[red] Video {process_id}: Burning subtitle [/red]")
-        burn_subtitle(video["path"], path_to_sub, font_folder, vid_out)
+        burn_subtitle(video["vid_path"], path_to_sub, font_folder, vid_out)
     
     def append_final_data(self, vid_files):
         for video in vid_files:
             width, height = get_resolution(video["vid_path"])
             
             video["config"]["font_size"] = int(min(width, height) * 0.060 * video["config"]["font_size_scale"])
-            
             video["config"] = self.adjust_config_values(video["config"])
+            
+            selected_font = video["config"]["font_family"]
+            
+            if selected_font == "Inter":
+                font_path = Handle.inter_font
+            elif selected_font == "Roboto Mono":
+                font_path = Handle.mono_font
+            elif video["custom_font_path"] != None:
+                font_path = video["font_file"]
             
             Handle.videos_data.append(
                 {**video, 
                 "resX": width,
                 "resY": height,
+                "font_path": font_path,
                 "transcript": []})
             
             print(Handle.videos_data)
@@ -101,8 +102,8 @@ class Handle:
         
         # Modify the color codes to match ass color code
         for key, value in config.items():
-                if "color" in key:
-                    config[key] = utils.RGB_to_BGR(value)
+            if "color" in key:
+                config[key] = utils.RGB_to_BGR(value)
                     
         config["alignment"] = Handle.alignment[config["alignment"]]
                     
