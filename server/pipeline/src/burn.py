@@ -8,6 +8,7 @@ def burn_subtitle(video_path, ass_path, fontdir_path, video_out):
     video_out = Path(video_out)
     print(ass_path)
     
+    video_out.parent.mkdir(parents=True, exist_ok=True)
     print("Burning stylized ASS subtitle file into video...")
     
     video_stream = ffmpeg.input(str(video_path))

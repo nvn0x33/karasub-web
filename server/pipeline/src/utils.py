@@ -26,17 +26,17 @@ def get_vid_files(jobs_info):
     found_files = []
     
     for job_info in jobs_info:
-        with open(job_info.path / "config.json", "r") as fp:
+        with open(job_info["path"] / "config.json", "r") as fp:
             config = json.load(fp)
             
-        vid_file = next(job_info.path.glob("input.*"), None)
-        font_file = next(job_info.path.glob("font.*"), None)
+        vid_file = next(job_info["path"].glob("input.*"), None)
+        font_file = next(job_info["path"].glob("font.*"), None)
         
         found_files.append({
             "config": config,
             "vid_path": vid_file,
             "custom_font_path": font_file,
-            "job_id": job_info.id
+            "job_id": job_info["id"]
         })
         
     

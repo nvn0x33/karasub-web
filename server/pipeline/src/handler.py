@@ -60,10 +60,11 @@ class Handle:
         new_script = ASS(video, video["config"])
         # Write script and get its path
         path_to_sub = new_script.write_script()
+        
         # Create path 
-        ## FIX THESE TWO LINES, GIVE CORRECT FONT FOLDER PATH AND CORRECT VIDEO OUTPUT PATH.
         font_folder = os.path.dirname(video["font_path"])
         vid_out = (Handle.output_dir / video["job_id"] / "output.mp4")
+        # vid_out = (Handle.output_dir / f"{video["job_id"]}-output.mp4")
 
         # Final output with subtitle + video.
         print(f"[red] Video {process_id}: Burning subtitle [/red]")
