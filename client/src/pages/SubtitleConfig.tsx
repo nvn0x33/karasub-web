@@ -44,10 +44,26 @@ function VideoConfig({ vidFile }) {
         alignment: "bottom-center",
     });
     const [fontUpload, setFontUpload] = useState<File | null>(null);
+    const [JOB_ID, setJOB_ID] = useState<string | null>(null);
+
+    const handleClick = async () => {
+        const id: string = await FileService.Upload(
+            config,
+            fontUpload,
+            vidFile
+        );
+        setJOB_ID(id);
+    };
 
     useEffect(() => {
-        console.log(vidFile);
-    }, [vidFile]);
+        if (!JOB_ID) return;
+
+        setInterval(async () => {
+            const status = await FileService.status(JOB_ID);
+            if (!status || status !== "done") return;
+            return;
+        }, 10000);
+    }, [JOB_ID]);
 
     return (
         <>
@@ -104,9 +120,7 @@ function VideoConfig({ vidFile }) {
                 </div>
                 <PrimaryButton
                     text="GENERATE VIDEO"
-                    handleClick={() => {
-                        FileService.Upload(config, fontUpload, vidFile);
-                    }}
+                    handleClick={handleClick}
                     style={{ paddingInline: 0 }}
                 />
             </div>
