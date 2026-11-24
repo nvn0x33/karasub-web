@@ -61,7 +61,6 @@ function VideoConfig({ vidFile }) {
         setInterval(async () => {
             const status = await FileService.status(JOB_ID);
             if (!status || status !== "done") return;
-            return;
         }, 10000);
     }, [JOB_ID]);
 

@@ -26,7 +26,7 @@ dist-ssr
 # Virtual Envs
 .venv
 server/pipeline/input/*
-server/pipeline/output/*
+server/output/*
 server/pipeline/temp/*
 server/jobs/*
 server/models/*
