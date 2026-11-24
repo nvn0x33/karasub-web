@@ -52,7 +52,7 @@ def home():
 @app.route('/jobs/<string:job_id>/status', methods=['GET'])
 def job_status(job_id):
     if job_id in jobs.jobs:
-        return jsonify({jobs.jobs[job_id]}), 200
+        return jsonify(jobs.jobs[job_id]), 200
     else:
         return jsonify({"error": "job id not found!"}), 404
 

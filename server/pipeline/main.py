@@ -29,5 +29,7 @@ def submit():
         
         new_handle.parallel_process_vids()
         
+        for job_id in job_queue:
+            append(job_id, "done")
         time.sleep(5)
     
