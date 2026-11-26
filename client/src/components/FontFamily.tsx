@@ -17,7 +17,6 @@ const SUPPORTED_FONTS = [
 export default function FontFamily({ setConfig }) {
     const [fontList, setFontList] = useState(SUPPORTED_FONTS);
     const [value, setValue] = useState<string>("Roboto Mono");
-    const font = useRef(null);
 
     const handleChange = (e) => {
         setValue(e.target.value);
