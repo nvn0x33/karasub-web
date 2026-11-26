@@ -3,7 +3,7 @@ import { ALargeSmall, Trash, Plus } from "lucide-react";
 import { useContext } from "react";
 import { FontFile } from "../contexts";
 
-export default function UploadFont({ setFontList }) {
+export default function UploadFont({ setFontList, setValue }) {
     const [fontUpload, setFontUpload] = useContext(FontFile);
     const fontInput = useRef(null);
 
@@ -35,6 +35,7 @@ export default function UploadFont({ setFontList }) {
         setFontList((prev) => {
             return [...prev, details];
         });
+        setValue(details.value);
     };
     const handleClick = () => {
         fontInput.current.click();
@@ -89,6 +90,7 @@ export default function UploadFont({ setFontList }) {
                     setFontList((prev) => {
                         return [...prev].slice(0, -1);
                     });
+                    setValue("Roboto Mono");
                 }}
             >
                 <Trash className="text-desc" size={18} />

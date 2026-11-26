@@ -1,6 +1,6 @@
 // import { useEffect } from "react";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import type { subtitleConfig } from "../types/subtitleConfig";
 import UploadFont from "./UploadFont";
 
@@ -14,23 +14,13 @@ const SUPPORTED_FONTS = [
         value: "Inter",
     },
 ];
-// const SUPPORTED_FONTS = [
-//     {
-//         displayName: "Roboto Mono",
-//         value: "roboto-mono",
-//     },
-//     {
-//         displayName: "Inter",
-//         value: "inter",
-//     },
-// ];
 export default function FontFamily({ setConfig }) {
     const [fontList, setFontList] = useState(SUPPORTED_FONTS);
-    // useEffect(() => {
-    //     // get the supported font information from the backend
-    // });
+    const [value, setValue] = useState<string>("Roboto Mono");
+    const font = useRef(null);
 
     const handleChange = (e) => {
+        setValue(e.target.value);
         setConfig((prev: subtitleConfig) => ({
             ...prev,
             font_family: e.target.value,
@@ -47,6 +37,7 @@ export default function FontFamily({ setConfig }) {
                 name="font-family"
                 id="font-family"
                 onChange={handleChange}
+                value={value}
             >
                 {fontList.map((font, index: number) => (
                     <option
@@ -58,7 +49,7 @@ export default function FontFamily({ setConfig }) {
                     </option>
                 ))}
             </select>
-            <UploadFont setFontList={setFontList} />
+            <UploadFont setFontList={setFontList} setValue={setValue} />
         </div>
     );
 }
