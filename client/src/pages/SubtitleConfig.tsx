@@ -10,7 +10,7 @@ import FontSizeScaler from "../components/FontSizeScaler";
 import PrimaryButton from "../components/PrimaryButton";
 import EmphasisControl from "../components/EmphasisControl";
 import FontPreview from "../components/FontPreview";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import TextCase from "../components/TextCase";
 import ToggleTextEffects from "../components/ToggleTextEffects";
 import SubtitlePos from "../components/SubtitlePos";
@@ -54,15 +54,6 @@ function VideoConfig({ vidFile }) {
         );
         setJOB_ID(id);
     };
-
-    useEffect(() => {
-        if (!JOB_ID) return;
-
-        setInterval(async () => {
-            const status = await FileService.status(JOB_ID);
-            if (!status || status !== "done") return;
-        }, 10000);
-    }, [JOB_ID]);
 
     return (
         <>

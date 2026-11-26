@@ -48,7 +48,7 @@ export class FileService {
             return data.status;
         } catch (err) {
             console.log(err);
-            return null;
+            return "failed";
         }
     }
 }
