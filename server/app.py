@@ -1,5 +1,4 @@
-from flask import Flask, request, jsonify, send_file
-from werkzeug.utils import secure_filename
+from flask import Flask, request, jsonify, send_from_directory
 from pathlib import Path
 from pipeline import main, jobs
 import threading
@@ -68,7 +67,13 @@ def download_video(job_id):
     if not output_path.exists():
         return jsonify({"error": "output file missing!"}), 404
     
-    return send_file(output_path, as_attachment=True)
+    # return send_file(output_path, as_attachment=True)
+    return send_from_directory(
+        directory=output_path.parent,
+        path=output_path.name,
+        as_attachment=True,
+        download_name='KaraSub-output.mp4'
+    )
         
 
 if __name__ == "__main__":
