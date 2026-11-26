@@ -24,7 +24,8 @@ export default function FileHandler({ isFileUploaded, JOB_ID }) {
                 <br />
                 Please Wait...
             </h3>
-        ),
+        ), // the frontend/client is checking for status of the video if its ready to download or not every 5 seconds. The transcribing part will take a little longer depending on video's length. the ouput file will be output to output/. Letss waaitttt... just a little longer. So thats it. hahahahahaha
+
         done: (
             <>
                 <h3 className="text-desc">Video is ready to download!</h3>
