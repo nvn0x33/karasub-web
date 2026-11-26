@@ -8,39 +8,38 @@ export default function FileHandler({ isFileUploaded, JOB_ID }) {
 
         const intervalID = setInterval(async () => {
             const status = await FileService.status(JOB_ID);
-            if (status !== "done" || status !== "failed") return;
+            if (status !== "done" && status !== "failed") return;
 
             setVideoStatus(status);
             clearInterval(intervalID);
         }, 10000);
     }, [JOB_ID]);
 
-    // Put is FIle Uploaded variable in parent only then call this component
-    if (isFileUploaded && videoStatus === "processing") {
-        return (
-            <div className="p-8 bg-config-bg">
-                <h3 className="text-desc">
-                    Video is processing!
-                    <br />
-                    Please Wait...
-                </h3>
-            </div>
-        );
-    } else if (isFileUploaded && videoStatus === "done") {
-        return (
-            <div className="p-8 bg-config-bg">
+    if (!isFileUploaded) return null;
+
+    const statusContent = {
+        processing: (
+            <h3 className="text-desc">
+                Video is processing!
+                <br />
+                Please Wait...
+            </h3>
+        ),
+        done: (
+            <>
                 <h3 className="text-desc">Video is ready to download!</h3>
                 an anchor tag with link
-            </div>
-        );
-    } else if (isFileUploaded && videoStatus === "failed") {
-        return (
-            <div className="p-8 bg-config-bg">
-                <h3 className="text-desc">
-                    This video processing has been failed! Maybe missing job_id
-                    or something else went wrong. Please retry!!
-                </h3>
-            </div>
-        );
-    }
+            </>
+        ),
+        failed: (
+            <h3 className="text-desc">
+                This video processing has been failed! Maybe missing job_id or
+                something else went wrong. Please retry!!
+            </h3>
+        ),
+    };
+
+    return statusContent[videoStatus] ? (
+        <div className="p-8 bg-config-bg">{statusContent[videoStatus]}</div>
+    ) : null;
 }
