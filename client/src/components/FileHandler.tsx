@@ -28,7 +28,9 @@ export default function FileHandler({ isFileUploaded, JOB_ID }) {
         done: (
             <>
                 <h3 className="text-desc">Video is ready to download!</h3>
-                <a href={`/api/jobs/${JOB_ID}/download`}>Download Video</a>
+                <a href={`/api/jobs/${JOB_ID}/download`} className="text-desc">
+                    Download Video
+                </a>
             </>
         ),
         failed: (
