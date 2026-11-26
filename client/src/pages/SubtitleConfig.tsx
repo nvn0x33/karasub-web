@@ -20,11 +20,11 @@ export default function SubtitleConfig() {
     const { videos } = useContext(VidList);
 
     return (
+        // I was thinking to do it for multiple videos but i got lazy.
         <section className="flex max-tablet-lg:flex-col h-full">
             {videos.map((video) => (
                 <VideoConfig vidFile={video.vidFile} key={video.id} />
             ))}
-            {/* <VideoConfig /> */}
         </section>
     );
 }

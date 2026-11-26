@@ -6,7 +6,6 @@ export class FileService {
         config: subtitleConfig,
         fontFile: File,
         videoFile: File
-        // id: string
     ) {
         const newConfig = JSON.stringify(config);
         const formData = new FormData();
