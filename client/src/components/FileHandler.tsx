@@ -28,7 +28,7 @@ export default function FileHandler({ isFileUploaded, JOB_ID }) {
         done: (
             <>
                 <h3 className="text-desc">Video is ready to download!</h3>
-                an anchor tag with link
+                <a href={`/api/jobs/${JOB_ID}/download`}>Download Video</a>
             </>
         ),
         failed: (
@@ -40,6 +40,8 @@ export default function FileHandler({ isFileUploaded, JOB_ID }) {
     };
 
     return statusContent[videoStatus] ? (
-        <div className="p-8 bg-config-bg">{statusContent[videoStatus]}</div>
+        <div className="p-8 bg-config-bg fixed bottom-6 right-6 z-50 w-80 rounded-xl border border-white/10 shadow-2xl">
+            {statusContent[videoStatus]}
+        </div>
     ) : null;
 }

@@ -14,6 +14,7 @@ import FontPreview from "../components/FontPreview";
 import TextCase from "../components/TextCase";
 import ToggleTextEffects from "../components/ToggleTextEffects";
 import SubtitlePos from "../components/SubtitlePos";
+import FileHandler from "../components/FileHandler";
 
 export default function SubtitleConfig() {
     const { videos } = useContext(VidList);
@@ -115,6 +116,7 @@ function VideoConfig({ vidFile }) {
                 />
             </div>
             <FontPreview width={1280} height={720} config={config} />
+            <FileHandler JOB_ID={JOB_ID} isFileUploaded={JOB_ID !== null} />
         </>
     );
 }
